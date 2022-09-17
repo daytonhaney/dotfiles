@@ -221,7 +221,3 @@ use_stdin = false
 symbol = "🔺 "
 # ~/.config/starship.toml
 
-[java]
-symbol = "🌟 "
-
-
