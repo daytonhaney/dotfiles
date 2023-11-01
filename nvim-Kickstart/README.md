@@ -1,10 +1,14 @@
 # kickstart.nvim
 
+### build on nvim-kickstart and nvim-kodo
 ### Introduction!
 
 so far 
 ![superpoudofthisdamnthin](https://github.com/runtimejpp/dotfiles/assets/37848207/752b43d7-a51d-488e-9e57-e9a380d2feac)
-build on nvim-kickstart and nvim-kodo
+
+
+
+## build on nvim-kickstart and nvim-kodo
 
 A starting point for Neovim that is:
 
@@ -145,4 +149,4 @@ This requires:
 {'nvim-telescope/telescope-fzf-native.nvim', build = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build' }
 ```
 
-# nvim
+  
