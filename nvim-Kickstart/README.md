@@ -1,14 +1,9 @@
-# kickstart.nvim
-
-### build on nvim-kickstart and nvim-kodo
-### Introduction!
-
-so far 
-![superpoudofthisdamnthin](https://github.com/runtimejpp/dotfiles/assets/37848207/752b43d7-a51d-488e-9e57-e9a380d2feac)
+# built with kickstart.nvim & nvim-kodo (it's fast)
 
 
+![So Far](superpoudofthisdamnthing.png)
 
-## build on nvim-kickstart and nvim-kodo
+### Introduction
 
 A starting point for Neovim that is:
 
@@ -19,6 +14,10 @@ A starting point for Neovim that is:
 
 This repo is meant to be used as by **YOU** to begin your Neovim journey; remove the things you don't use and add what you miss.
 
+Kickstart.nvim targets *only* the latest ['stable'](https://github.com/neovim/neovim/releases/tag/stable) and latest ['nightly'](https://github.com/neovim/neovim/releases/tag/nightly) of Neovim. If you are experiencing issues, please make sure you have the latest versions.
+
+Distribution Alternatives:
+- [LazyVim](https://www.lazyvim.org/): A delightful distribution maintained by @folke (the author of lazy.nvim, the package manager used here)
 
 ### Installation
 
@@ -149,4 +148,4 @@ This requires:
 {'nvim-telescope/telescope-fzf-native.nvim', build = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build' }
 ```
 
-  
+# nvim

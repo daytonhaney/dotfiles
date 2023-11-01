@@ -1,4 +1,4 @@
-local lspconfig = require("lspconfig")
+local lspconfig = require("lua.anchor.lsp.lspconfig")
 
 local M = {}
 

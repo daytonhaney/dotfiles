@@ -1,4 +1,5 @@
 local wk = require("which-key")
+local wk = require("which-key")
 wk.setup {
 }
 
@@ -56,6 +57,10 @@ local mappings = {
   
   },
 }
+
+-- Map Enter key to select in Telescope
+vim.api.nvim_set_keymap('n', '<CR>', [[<Cmd>Telescope send<CR>]], { noremap = true, silent = true })
+
 
 
 local opts = { prefix = '<leader>' }

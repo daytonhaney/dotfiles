@@ -7,7 +7,7 @@ lazy.setup({
     lazy = true,
     ensure_installed = {"javascript","typescript","html","rust", "go","c", "python"},
     cmd = { "TSInstall", "TSBufEnable", "TSBufDisable", "TSModuleInfo" },
-    config = function() require('anchor.ts.treesitter') end,
+    config = function() require('lua.anchor.lsp.treesitter') end,
   },
   {
     'windwp/nvim-ts-autotag',
@@ -112,7 +112,7 @@ lazy.setup({
     lazy = true,
     cmd = { "LspInfo", "LspInstall", "LspUninstall", "LspStart" },
     config = function()
-      require "anchor.lsp.lspconfig"
+      require "lua.anchor.lsp.lspconfig"
     end,
   },
 
