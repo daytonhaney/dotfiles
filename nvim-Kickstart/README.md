@@ -4,7 +4,7 @@
 
 so far 
 ![superpoudofthisdamnthin](https://github.com/runtimejpp/dotfiles/assets/37848207/752b43d7-a51d-488e-9e57-e9a380d2feac)
-
+build on nvim-kickstart and nvim-kodo
 
 A starting point for Neovim that is:
 
