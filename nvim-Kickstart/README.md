@@ -2,8 +2,8 @@
 
 ### Introduction!
 
-
-[](https://github.com/runtimejpp/dotfiles/assets/37848207/e88e612b-01b9-4c8e-a9d9-dbb55731c0a2)
+so far 
+![superpoudofthisdamnthin](https://github.com/runtimejpp/dotfiles/assets/37848207/752b43d7-a51d-488e-9e57-e9a380d2feac)
 
 
 A starting point for Neovim that is:
@@ -15,7 +15,6 @@ A starting point for Neovim that is:
 
 This repo is meant to be used as by **YOU** to begin your Neovim journey; remove the things you don't use and add what you miss.
 
-So Far - [so far](https://github.com/runtimejpp/dotfiles/assets/37848207/e88e612b-01b9-4c8e-a9d9-dbb55731c0a2) and latest ['nightly']
 
 ### Installation
 
