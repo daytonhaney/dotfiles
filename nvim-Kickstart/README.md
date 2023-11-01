@@ -2,7 +2,8 @@
 
 ### Introduction!
 
-[So Far](https://github.com/runtimejpp/dotfiles/assets/37848207/e88e612b-01b9-4c8e-a9d9-dbb55731c0a2)
+
+[](https://github.com/runtimejpp/dotfiles/assets/37848207/e88e612b-01b9-4c8e-a9d9-dbb55731c0a2)
 
 
 A starting point for Neovim that is:
