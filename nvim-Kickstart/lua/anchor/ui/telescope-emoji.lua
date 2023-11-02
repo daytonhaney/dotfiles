@@ -17,4 +17,4 @@ local M = telescope.setup {
       }
     },
   }
-  return M 
+  return M

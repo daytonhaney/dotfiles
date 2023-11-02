@@ -22,7 +22,7 @@ require('nvim-treesitter.configs').setup {
     incremental_selection = {
       enable = true,
       keymaps = {
-        init_selection = '<c-space>',
+        init_selection = '<CR>',
         node_incremental = '<c-space>',
         scope_incremental = '<c-s>',
         node_decremental = '<M-space>',
@@ -89,4 +89,4 @@ vim.cmd([[:set laststatus=3]]) -- Global Status Line
 -- CursorLine Setup
 vim.cmd([[:hi CursorLineNr guibg=NONE guifg=#ffffff]]) -- Highlight cursorline
 vim.cmd([[:set cursorline]])                           -- Highlight cursorline
-vim.cmd([[:set cursorlineopt=number]])       
+vim.cmd([[:set cursorlineopt=number]])    

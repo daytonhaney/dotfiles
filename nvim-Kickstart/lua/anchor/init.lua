@@ -13,7 +13,7 @@ vim.opt.rtp:prepend(vim.env.LAZY or lazypath)
 local lazy = require("lazy")
 lazy.setup({
   {
-    'nvim-treesitter/nvim-treesitter',
+
     'ray-x/web-tools.nvim',
     {
       "williamboman/mason.nvim",
@@ -70,8 +70,6 @@ lazy.setup({
             dependencies = "hrsh7th/nvim-cmp",
           },
         },
-      
-    
     {
       'windwp/nvim-ts-autotag',
       event = "InsertEnter",

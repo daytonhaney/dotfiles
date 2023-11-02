@@ -25,4 +25,3 @@ local has_value = function(tab, val)
       end,
     }
   )
-  
