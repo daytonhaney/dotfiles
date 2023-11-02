@@ -83,3 +83,10 @@ require('nvim-treesitter.configs').setup {
       opts = {},
     }
 }
+
+vim.cmd([[:set laststatus=3]]) -- Global Status Line
+
+-- CursorLine Setup
+vim.cmd([[:hi CursorLineNr guibg=NONE guifg=#ffffff]]) -- Highlight cursorline
+vim.cmd([[:set cursorline]])                           -- Highlight cursorline
+vim.cmd([[:set cursorlineopt=number]])       
