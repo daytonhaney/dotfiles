@@ -13,7 +13,5 @@ local M = function(m)
         end
       end
     end
-  end
-  
-  return M
-  
+end
+return M

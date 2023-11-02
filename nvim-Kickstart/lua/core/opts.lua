@@ -10,9 +10,10 @@ g.currentTheme = config.colorscheme
 
 g.statusStyle = config.statusstyle
 opt.pumheight = 10
-opt.fileencoding = 'utf-8'
+--opt.encoding=utf-8
+--opt.fileencoding =UTF-8
 opt.splitbelow = true
-opt.list = true
+
 opt.splitright = true
 opt.termguicolors = true
 opt.conceallevel = 0

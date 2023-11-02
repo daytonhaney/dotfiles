@@ -50,7 +50,7 @@ local logos = setmetatable({
 M.dashboard = {
   header = vim.split(logos.TEXT, "\n"),
   buttons = {
-    {"💡     New File", "SPC   n"},
+    {"💡     New File","SPC n  "},
     { "🔭     Find File", "SPC f f" },
     { "🗄️     Recent Files", "SPC f g" },
     { "🔍     Find Word", "SPC f r" },

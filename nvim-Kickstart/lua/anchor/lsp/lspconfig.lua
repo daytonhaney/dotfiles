@@ -1,4 +1,4 @@
-local lspconfig = require("lua.anchor.lsp.lspconfig")
+
 
 local M = {}
 
@@ -31,4 +31,8 @@ M.capabilities.textDocument.completion.completionItem = {
       "additionalTextEdits",
     },
   },
+
 }
+
+require("ufo").setup()
+return M

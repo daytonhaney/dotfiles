@@ -1,4 +1,5 @@
-local opts = {
+
+local options = {
     highlight_hovered_item = true,
     show_guides = true,
     auto_preview = false,
@@ -10,8 +11,8 @@ local opts = {
     show_relative_numbers = false,
     show_symbol_details = false,
     autofold_depth = nil,
-    auto_unfold_hover = true,
-    fold_markers = { '', '' },
+
+    endmarkers = { '', '' },
     wrap = false,
     keymaps = { -- These keymaps can be a string or a table for multiple keys
       close = { "<Esc>", "q" },
@@ -60,5 +61,5 @@ local opts = {
       Fragment = { icon = "", hl = "@constant" },
     },
   }
-  require("symbols-outline").setup(opts)
-  
+  require("symbols-outline").setup(opts,options)
+  return {}

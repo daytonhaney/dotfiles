@@ -1,5 +1,5 @@
 require("mason-lspconfig").setup {
-    ensure_installed = { "lua_ls", "rust_analyzer" },
+    ensure_installed = { "lua_ls", "rust_analyzer","biome","tsserver","html","css","es-list" },
 }
 
 require'lspinstall'.setup() -- important
