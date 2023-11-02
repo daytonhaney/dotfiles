@@ -1,9 +1,16 @@
-local wk = require("which-key")
+
 local wk = require("which-key")
 wk.setup {
 }
 
 local mappings = {
+  ["<space>"] =
+  {
+    name = 'Harpoon',
+    ["<space>"] = {":<SPC><cr>", "add file"},
+    ["<space><space>"] = {"<leader><leader>", "<cmd>lua require('harpoon.mark').add_file()<cr>",        desc = "Add file to Harpoon" },
+    { "<leader><spaee>", "<cmd>lua require('harpoon.ui').toggle_quick_menu()<cr>", desc = "Toggle Harpoon Menu" },
+  },
   q = {
     name = 'File',
     q = { ":q<cr>", "Quit" },
@@ -40,22 +47,8 @@ local mappings = {
     s = { ":SymbolsOutline<cr>", "Overview of file" },
     w = { ":SessionSave<cr>", "Save this session" }
   },
-  h = {
-    name = "Hop",
-    c = { ":HopChar1<cr>", "Single Character" },
-    C = { ":HopChar2<cr>", "Double Characters" },
-    a = { ":HopAnywhere<cr>", "Anywhere" },
-    l = { ":HopLine<cr>", "Line" },
-    L = { ":HopLineStart<cr>", "Line Start" },
-    v = { ":HopVertical<cr>", "Vertically" },
-    w = { ":HopWord<cr>", "Word" },
 
-  },
-
-  SPC = {"Harpoon",
-    space = {},
-  
-  },
+  z = {name = "Workbench"}, 
 }
 
 -- Map Enter key to select in Telescope
