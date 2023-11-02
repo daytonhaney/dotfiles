@@ -1,7 +1,8 @@
 # built with kickstart.nvim & nvim-kodo (it's fast)
 
 
-![So Far](superpoudofthisdamnthing.png)
+![So Far: ](https://github.com/runtimejpp/dotfiles/assets/37848207/bd9bda98-388e-4a47-9a5e-849a845b04de)
+
 
 ### Introduction
 
