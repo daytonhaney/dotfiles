@@ -1,7 +1,8 @@
 # built with kickstart.nvim & nvim-kodo (it's fast)
 
 
-![So far:](https://github.com/runtimejpp/dotfiles/assets/37848207/c230ccd2-48e5-48df-a7e8-24b1d81f7b5d)
+![So Far:](https://github.com/runtimejpp/dotfiles/assets/37848207/dbf6525d-9ec1-4f3a-9331-294798a4f368)
+
 
 
 
