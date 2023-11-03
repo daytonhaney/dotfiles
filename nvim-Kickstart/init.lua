@@ -16,7 +16,6 @@ require('nvim-treesitter.configs').setup {
   
     -- Autoinstall languages that are not installed. Defaults to false (but you can change for yourself!)
     auto_install = true,
-  
     highlight = { enable = true },
     indent = { enable = true },
     incremental_selection = {
@@ -26,8 +25,8 @@ require('nvim-treesitter.configs').setup {
         node_incremental = '<c-space>',
         scope_incremental = '<c-s>',
         node_decremental = '<M-space>',
-      }, 
-      dependencies = {      
+      },
+      dependencies = { 
       "nvim-treesitter/nvim-treesitter-textobjects",
       "RRethy/nvim-treesitter-endwise",
       "mfussenegger/nvim-ts-hint-textobject",
@@ -89,4 +88,4 @@ vim.cmd([[:set laststatus=3]]) -- Global Status Line
 -- CursorLine Setup
 vim.cmd([[:hi CursorLineNr guibg=NONE guifg=#ffffff]]) -- Highlight cursorline
 vim.cmd([[:set cursorline]])                           -- Highlight cursorline
-vim.cmd([[:set cursorlineopt=number]])    
+vim.cmd([[:set cursorlineopt=number]]) 

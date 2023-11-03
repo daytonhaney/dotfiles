@@ -1,16 +1,24 @@
 
 local wk = require("which-key")
 local leader = "<leader>"
-wk.setup {
+
+wk.setup = {}
+
+local key_map = {
+  key_lables = {
+    ["<space>"] = "SPC",
+    ["<TAB>"]   = "TAB"
+  },
 }
 
 local mappings = {
 
 
-    ["<space>"] = {
-      name = "Harpoon",
-    ["<space>"] = { ":lua require('harpoon.ui').toggle_quick_menu()<CR>", "Toggle Harpoon Menu" },
-              q = {":q<CR>", "Exit (neovim)"},
+  ["<space>"] = {
+    name = "Harpoon",
+          ["<space>"] = { ":lua require('harpoon.ui').toggle_quick_menu()<CR>", "Toggle Harpoon Menu" },
+            ["<TAB>"] = {":NvimTreeFindFile<CR>","Nvim Tree"},
+                    q = {":q<CR>", "Exit (neovim)"},
   },
 
   q = {
@@ -52,9 +60,6 @@ local mappings = {
 }
 
 -- Map Enter key to select in Telescope
---vim.api.nvim_set_keymap('n', '<leader><CR>', [[<Cmd>Telescope send<CR>]], { noremap = true, silent = true })
-
-
-
+vim.api.nvim_set_keymap('n', 'p', [[<Cmd>Telescope send<CR>]], { noremap = true, silent = true })
 local opts = { prefix = '<leader>' }
-wk.register(mappings, opts)
+wk.register(mappings, opts,key_map)

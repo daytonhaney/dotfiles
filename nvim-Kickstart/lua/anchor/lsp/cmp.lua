@@ -100,5 +100,4 @@ local options = {
     { name = "path" },
   },
 }
-
 cmp.setup(options)

@@ -1,9 +1,6 @@
 require("nvim-tree").setup {
+
     renderer = {
-      root_folder_label = false,
-      indent_markers = {
-        enable = true,
-      },
       icons = {
         glyphs = {
           default = ' ',
@@ -37,7 +34,7 @@ require("nvim-tree").setup {
       },
     },
     filters = {
-      exclude = { '.git', 'node_modules', '.cache' },
+      exclude = { 'node_modules', '.cache',"venv" },
     },
     update_focused_file = {
       enable = true,
@@ -54,4 +51,3 @@ require("nvim-tree").setup {
   autocmd BufEnter * ++nested if winnr('$') == 1 && bufname() == 'NvimTree_' . tabpagenr() | quit | endif
   nnoremap <leader>cd :cd %:p:h<CR>:pwd<CR>
   ]]
-  
