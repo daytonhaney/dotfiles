@@ -1,3 +1,6 @@
+-- dupilicate file lua/options.lua
+-- nvim-mash
+
 local cmd = vim.cmd
 local opt = vim.opt
 local diagnostic = vim.diagnostic
@@ -7,13 +10,12 @@ opt.hidden = true
 g.code_action_menu_window_border = 'single'
 opt.ch = 0
 g.currentTheme = config.colorscheme
-
+g.theme_cache = vim.fn.stdpath "data" .. "/colors_data/"
 g.statusStyle = config.statusstyle
 opt.pumheight = 10
---opt.encoding=utf-8
---opt.fileencoding =UTF-8
+opt.fileencoding = 'utf-8'
 opt.splitbelow = true
-
+opt.list = true
 opt.splitright = true
 opt.termguicolors = true
 opt.conceallevel = 0
@@ -38,8 +40,8 @@ opt.foldlevelstart = 99
 opt.foldenable = true
 opt.mouse = "a" -- Mouse support for noobs
 opt.cursorline = true
-opt.tabstop = 4
-opt.softtabstop = 4
+opt.tabstop = 2
+opt.softtabstop = 2
 opt.shiftwidth = 0
 opt.autoindent = true
 opt.expandtab = true
@@ -78,7 +80,7 @@ local builtins = {
   "zipPlugin",
   "logipat",
   "matchit",
-  
+  "tutor",
   "rplugin",
   "syntax",
   "synmenu",
@@ -87,6 +89,8 @@ local builtins = {
   "bugreport",
   "ftplugin",
   "archlinux",
+  "fzf",
+  "tutor_mode_plugin",
   "sleuth",
   "vimgrep"
 }

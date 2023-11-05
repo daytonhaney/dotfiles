@@ -13,6 +13,12 @@ vim.opt.rtp:prepend(vim.env.LAZY or lazypath)
 local lazy = require("lazy")
 lazy.setup({
   {
+    'nvim-treesitter/nvim-treesitter',
+    run = ":TSUpdate",
+    cmd = { "TSInstall", "TSBufEnable", "TSBufDisable", "TSModuleInfo" },
+    config = function() require('core.treesitter') end
+  },
+  {
 
     'ray-x/web-tools.nvim',
     {
