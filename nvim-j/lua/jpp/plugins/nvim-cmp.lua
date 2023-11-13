@@ -26,7 +26,32 @@ return {
       if not snip_status_ok then
         return
       end
-  
+      local symbol_map = {
+        Text = "󰉿 ",
+        Method = "󰆧 ",
+        Function = "󰡱 ",
+        Constructor = " ",
+        Field = "󰜢 ",
+        Variable = "󰘥 ",
+        Class = "󰠱",
+        Interface = " ",
+        Module = " ",
+        Property = "󰜢 ",
+        Unit = "󰑭",
+        Value = "󰎠 ",
+        Enum = " ",
+        Keyword = "󰌋 ",
+        Snippet = " ",
+        Color = "󰏘",
+        File = "󰈙",
+        Reference = "󰈇 ",
+        Folder = "󰉋 ",
+        EnumMember = " ",
+        Constant = "󰭍 ",
+        Struct = "󰙅 ",
+        Event = " ",
+        Operator = "󰆕 ",
+      }
   
   
       luasnip.config.set_config({

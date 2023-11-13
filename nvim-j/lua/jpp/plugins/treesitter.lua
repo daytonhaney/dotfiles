@@ -38,10 +38,7 @@ return {
           "graphql",
           "bash",
           "lua",
-          "vim",
-          "dockerfile",
           "gitignore",
-          "query",
         },
         incremental_selection = {
           enable = true,

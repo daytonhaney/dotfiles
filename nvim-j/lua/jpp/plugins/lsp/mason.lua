@@ -32,7 +32,7 @@ return {
         "cssls",
         "tailwindcss",
         "biome",
-        "ruff",
+       -- "ruff",
         "svelte",
         "lua_ls",
         "graphql",
