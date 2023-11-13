@@ -1,15 +1,20 @@
 local cmd = vim.cmd
 local opt = vim.opt
 local diagnostic = vim.diagnostic
+--local sc = 'signcolumn=number'
 local g = vim.g
-opt.hidden = true
+
+
+--vim.o.signcolumn = "yes:2"
+opt.relativenumber = true
+opt.number = true
 g.code_action_menu_window_border = 'single'
-opt.ch = 0
+
 g.theme_cache = vim.fn.stdpath "data" .. "/colors_data/"
-opt.pumheight = 10
 opt.splitbelow = true
 opt.list = true
 opt.splitright = true
+-- opt.fileencoding = 'utf-8'
 opt.termguicolors = true
 opt.conceallevel = 0
 opt.showtabline = 3
@@ -17,9 +22,13 @@ opt.tabline = ' '
 opt.showmode = false
 opt.backup = false
 opt.number = true
-opt.numberwidth = 3
+opt.iskeyword:append("-")
 opt.ruler = false
+--set cmdheight=2
+opt.ignorecase = true
+opt.smartcase = true
 opt.writebackup = false
+opt.cursorline = true
 opt.updatetime = 300
 opt.timeoutlen = 100
 opt.clipboard = "unnamedplus"
@@ -28,18 +37,20 @@ opt.ignorecase = true
 opt.scrolloff = 0
 opt.sidescrolloff = 5
 opt.foldcolumn = '0' -- '0' is not bad
-opt.foldlevel = 99   -- Using ufo provider need a large value, feel free to decrease the value
+opt.foldlevel = 99   -- Using ufo provider need a large value, feel free to decrease the va
+opt.termguicolors = true
+opt.background = 'dark'
+--opt.signcolumn = 'yes'
 opt.foldlevelstart = 99
 opt.foldenable = true
 opt.mouse = "a" -- Mouse support for noobs
 opt.cursorline = true
-opt.tabstop = 2
-opt.softtabstop = 2
-opt.shiftwidth = 0
+opt.tabstop = 4
+opt.softtabstop = 4
+opt.shiftwidth = 4
 opt.autoindent = true
 opt.expandtab = true
-opt.fillchars:append('eob: ')
-opt.listchars:append "space: "
+
 cmd('set lazyredraw')
 cmd('set nolist')
 opt.laststatus = 0                  -- Global Status
@@ -48,7 +59,7 @@ opt.updatetime = 250
 opt.shadafile = "NONE"
 opt.shadafile = ""
 opt.swapfile = false
-opt.shortmess:append "sI"
+--opt.shortmess:append "sI"
 
 -- Disabling some built in plugins
 local builtins = {

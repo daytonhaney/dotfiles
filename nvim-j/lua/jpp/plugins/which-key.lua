@@ -1,11 +1,10 @@
-do return {
-  {
-    "folke/which-key.nvim",
-    keys = { "<leader>", ' ', "'", "`" },
-    lazy = true,
-    config = function() require('which-key') end
-  },
-} end
+return {
+  "folke/which-key.nvim",
+  keys = {"<leader>"," ","'"},
+  lazy = true,
+  config = function() require("which-key")
+
+
 
 local wk = require("which-key")
 local leader = "<leader>"
@@ -71,3 +70,7 @@ local mappings = {
 vim.api.nvim_set_keymap('n', 'p', [[<Cmd>Telescope send<CR>]], { noremap = true, silent = true })
 local opts = { prefix = '<leader>' }
 wk.register(mappings, opts,key_map)
+
+
+  end
+}
