@@ -7,7 +7,7 @@ return {
 
 
 local wk = require("which-key")
-local leader = "<leader>"
+local leader = " "
 
 wk.setup = {}
 
@@ -53,8 +53,16 @@ local mappings = {
   t = {
     name = "Terminal",
     t = { ":ToggleTerm<cr>", "Split Below" },
+    
   },
-  l = {
+  
+    P = {
+    name = "Processes",
+      p  = {"vsplit term://top"}, -- may change          
+    
+    },
+  
+    l = {
     name = "Misc",
     l = { ":Lazy<cr>", "Open Lazy" },
     t = { ":Trouble<cr>", "Open Trouble" },

@@ -1,5 +1,9 @@
---require("jpp.core.keymaps")
---require("jpp.core")
+--require"jpp.core.colorscheme"
+local   M = {} 
+return M 
+
+
+
 
 
 
