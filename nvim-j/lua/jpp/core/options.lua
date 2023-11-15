@@ -87,10 +87,10 @@ local builtins = {
   "ftplugin",
   "archlinux",
   "fzf",
-  "tutor_mode_plugin",
+ -- "tutor_mode_plugin",
   "sleuth",
   "vimgrep",
-  "Man",
+  --"Man",
 }
 
 

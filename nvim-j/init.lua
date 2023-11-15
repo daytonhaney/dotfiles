@@ -1,8 +1,7 @@
-require("jpp.core.colorscheme")
---require"jpp.plugins"
 vim.g.mapleader = ' '
-require"jpp.core"
-require"jpp.core.options"
-require"jpp.lazy"
 
-
+--require("jpp.core.colorscheme")
+require("jpp.core.options")
+require("jpp.core.keymaps")
+require("jpp.lazy")
+require("jpp.core.colorscheme")

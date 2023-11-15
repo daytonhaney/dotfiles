@@ -56,12 +56,11 @@ local mappings = {
     
   },
   
-    P = {
+    p = {
     name = "Processes",
-      p  = {"vsplit term://top"}, -- may change          
-    
+      p  = {":vsplit term://top<CR>", "view current processes"}, -- may change          
     },
-  
+    
     l = {
     name = "Misc",
     l = { ":Lazy<cr>", "Open Lazy" },
@@ -72,6 +71,11 @@ local mappings = {
     s = { ":SymbolsOutline<cr>", "Overview of file" },
     w = { ":SessionSave<cr>", "Save this session" }
   },
+    s = {
+    name = "split screen",
+--   v = {":<space>s|","Verticle Split"},
+--    h = {":<space>s-","Horizontal Split"},
+    }
 }
 
 -- Map Enter key to select in Telescope
