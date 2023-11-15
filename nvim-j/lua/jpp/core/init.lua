@@ -1,4 +1,3 @@
-require("colorscheme")
-require("options")
-require("keymaps")
+require("jpp.core.keymaps")
+require("jpp.core.options")
 

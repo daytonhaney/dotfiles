@@ -10,7 +10,6 @@ opt.relativenumber = true
 opt.number = true
 g.code_action_menu_window_border = 'single'
 opt.ch = 0
-g.theme_cache = vim.fn.stdpath "data" .. "/colors_data/"
 opt.pumheight = 10
 
 opt.splitbelow = true
@@ -35,7 +34,7 @@ opt.foldcolumn = '0' -- '0' is not bad
 opt.foldlevel = 99   -- Using ufo provider need a large value, feel free to decrease the value
 opt.foldlevelstart = 99
 opt.foldenable = true
-opt.mouse = "a" -- Mouse support for noobs
+opt.mouse = "a" -- Mouse support
 opt.cursorline = true
 opt.tabstop = 4
 opt.softtabstop = 4

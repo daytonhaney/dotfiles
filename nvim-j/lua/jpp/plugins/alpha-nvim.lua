@@ -4,6 +4,7 @@
     "goolord/alpha-nvim",
       dependencies = {"nvim-tree/nvim-web-devicons"},
       priority = 1000,
+      lazy =  false,
       cmd = {
         "Alpha",
         "AlphaRedraw"

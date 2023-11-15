@@ -2,7 +2,7 @@ local M = {}
 local stats = require("lazy").stats()
 M.statusstyle = 'fancy'
 local logos = setmetatable({
-    TEXT = 
+    TEXT_NAME =
 
                   [[
       █████████████████████████████████████
@@ -132,7 +132,7 @@ local logos = setmetatable({
   }
 )
 M.dashboard = {
-  header = vim.split(logos.TEXT, "\n"),
+  header = vim.split(logos.TEXT_NAME, "\n"),
   buttons = {
     {"💡     new file","SPC n  "},
     { "🔭     find file", "SPC f f" },
