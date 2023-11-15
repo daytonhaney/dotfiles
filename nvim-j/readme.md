@@ -12,23 +12,22 @@
                                 
 ### replace 
                                 
-example
-    ```
+#### example
+    
     : .{name=123}
-
-    ```                            
 
 #### visual line mode - <Shift> + v
                                 
 ##### will remove all highlighted instances of .{name=123}
-                                                           
-    ```                                 
+                                                                                                
     :s/ .{name=123}/       + <Enter> 
                                         
-    ```
+
+
 ### indent/ dedent 
 
-    ``` 
+     
     2>j
-    ```
+    
+
 
