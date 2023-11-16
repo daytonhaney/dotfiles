@@ -1,5 +1,5 @@
 return {
-  "folke/which-key.nvim",
+   "folke/which-key.nvim",
   keys = {"<leader>"," ","'"},
   lazy = true,
   config = function() require("which-key")
@@ -27,6 +27,12 @@ local mappings = {
         ["<TAB>"] = {":NvimTreeFindFile<CR>","Nvim Tree"},
         q = {":q<CR>", "Exit (neovim)"},
   },
+  {
+    e = {
+        name = "explorer",
+        e = {"explorer","explorer"},
+        b = {},
+  },
 
     q = {
         name = 'File',
@@ -43,10 +49,10 @@ local mappings = {
         r = { ":Telescope live_grep<cr>", "Find String" },
         c = { ":PrismTelescope<cr>", "Kolorschemes" },
   },
-    G = {
+    g = {
         name = "Grapple",
         a = { ":GrappleTag<cr>", "Add A Bookmark" },
-        t = { ":GrappleToggle<cr>", "Toggle Bookmark" },
+         t = { ":GrappleToggle<cr>", "Toggle Bookmark" },
         r = { ":GrappleUntag<cr>", "Remove Bookmark" },
         g = { ":GrapplePopup tags<cr>", "Show All Bookmarks" }
   },
@@ -71,13 +77,16 @@ local mappings = {
   },
     s = {
         name = "split screen",
-        v = {":<space>s|","Verticle Split"},
-        h = {":<space>s-","Horizontal Split"},
+        ["<|>"] = {":<space>s|","verticle split"},
+        ["<->"] = {":<space>s-","horizontal split"},
     }
 }
 -- Map Enter key to select in Telescope
-vim.api.nvim_set_keymap('n', 'p', [[<Cmd>Telescope send<CR>]], { noremap = true, silent = true })
-local opts = { prefix = '<leader>' }
-wk.register(mappings, opts,key_map)
+vim.api.nvim_set_keymap('n', 'p', [[<Cmd>Telescope send<CR>]], { noremap = true, silent = true }),
+    }
+
+    local opts = { prefix = '<leader>' }
+
+    wk.register(mappings, opts,key_map)
   end
 }
