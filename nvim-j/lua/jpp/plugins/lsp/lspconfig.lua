@@ -3,7 +3,9 @@ return {
   event = { "BufReadPre", "BufNewFile" },
   dependencies = {
     "hrsh7th/cmp-nvim-lsp",
+    "nvimdev/lspsaga.nvim",
     { "antosha417/nvim-lsp-file-operations", config = true },
+
   },
   config = function()
     -- import lspconfig plugin
@@ -16,6 +18,7 @@ return {
 
     local opts = { noremap = true, silent = true }
     local on_attach = function(client, bufnr)
+
       opts.buffer = bufnr
 
       -- set keybinds
@@ -81,6 +84,10 @@ return {
       capabilities = capabilities,
       on_attach = on_attach,
     })
+    lspconfig["biome"].setup({
+      capabilities = capabilities,
+      on_attach = on_attach,
+    })
 
     -- configure css server
     lspconfig["cssls"].setup({
@@ -112,10 +119,11 @@ return {
     })
 
     -- configure prisma orm server
-    lspconfig["prismals"].setup({
-      capabilities = capabilities,
-      on_attach = on_attach,
-    })
+   -- lspconfig["prismals"].setup({
+    --  capabilities = capabilities,
+    --  on_attach = on_attach,
+   -- })
+   --
 
     -- configure graphql language server
     lspconfig["graphql"].setup({
@@ -136,13 +144,18 @@ return {
       capabilities = capabilities,
       on_attach = on_attach,
     })
-
     -- configure lua server (with special settings)
     lspconfig["lua_ls"].setup({
       capabilities = capabilities,
       on_attach = on_attach,
       settings = { -- custom settings for lua
         Lua = {
+            runtime = {
+                version = 'LuaJIT',
+            },
+            telemetry = {
+                enable = false,
+            },
           -- make the language server recognize "vim" global
           diagnostics = {
             globals = { "vim" },

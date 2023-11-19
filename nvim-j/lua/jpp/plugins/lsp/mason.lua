@@ -28,17 +28,19 @@ return {
       -- list of servers for mason to install
       ensure_installed = {
         "tsserver",
-      --  "vue",
-       -- "astro-ls",
+        "volar",
         "html",
         "cssls",
         "tailwindcss",
+        "sqls",
         "biome",
-       -- "ruff",
+        "ruff_lsp",
         --"svelte",
         "lua_ls",
        -- "graphql",
         "emmet_ls",
+        "marksman",
+        "astro",
        -- "prismals",
       },
       -- auto-install configured servers (with lspconfig)

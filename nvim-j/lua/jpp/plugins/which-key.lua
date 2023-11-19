@@ -1,5 +1,5 @@
 return {
-   "folke/which-key.nvim",
+  "folke/which-key.nvim",
   keys = {"<leader>"," ","'"},
   lazy = true,
   config = function() require("which-key")
@@ -27,12 +27,6 @@ local mappings = {
         ["<TAB>"] = {":NvimTreeFindFile<CR>","Nvim Tree"},
         q = {":q<CR>", "Exit (neovim)"},
   },
-  {
-    e = {
-        name = "explorer",
-        e = {"explorer","explorer"},
-        b = {},
-  },
 
     q = {
         name = 'File',
@@ -52,17 +46,26 @@ local mappings = {
     g = {
         name = "Grapple",
         a = { ":GrappleTag<cr>", "Add A Bookmark" },
-         t = { ":GrappleToggle<cr>", "Toggle Bookmark" },
+        t = { ":GrappleToggle<cr>", "Toggle Bookmark" },
         r = { ":GrappleUntag<cr>", "Remove Bookmark" },
         g = { ":GrapplePopup tags<cr>", "Show All Bookmarks" }
   },
     t = {
-        name = "Terminal",
+        name = "Tab",
         t = { ":ToggleTerm<cr>", "Split Below" },
   },
+    
+    a = {
+        name = "terminal $:",
+        t = {":ToggleTerm<CR>","Bash Zsh Fish"},
+   },
     p = {
         name = "Processes",
-        p  = {":vsplit term://top<CR>", "view current processes"}, -- may change          
+        p  = {":vsplit term://top<CR>", "View Processes"}, -- may change          
+    },
+        e = {
+        name = "File Tree",
+        e = {":<cmd>NvimTreeToggle<CR>", "Open File Tree"},
     },
 
     l = {
@@ -71,22 +74,20 @@ local mappings = {
         t = { ":Trouble<cr>", "Open Trouble" },
         c = { ":lua require('telescope') vim.lsp.buf.code_action()<cr>", "Show Code Actions" },
         m = { ":Mason<cr>", "Open Mason" },
+
         n = { ":Neogit<cr>", "Open Neogit" },
         s = { ":SymbolsOutline<cr>", "Overview of file" },
         w = { ":SessionSave<cr>", "Save this session" }
   },
     s = {
-        name = "split screen",
-        ["<|>"] = {":<space>s|","verticle split"},
-        ["<->"] = {":<space>s-","horizontal split"},
+        name = "Split screen",
+        v = {":<space>s|","Verticle Split",},
+        h = {":<space>s-","Horizontal Split"},
     }
 }
 -- Map Enter key to select in Telescope
-vim.api.nvim_set_keymap('n', 'p', [[<Cmd>Telescope send<CR>]], { noremap = true, silent = true }),
-    }
-
-    local opts = { prefix = '<leader>' }
-
-    wk.register(mappings, opts,key_map)
+vim.api.nvim_set_keymap('n', 'p', [[<Cmd>Telescope send<CR>]], { noremap = true, silent = true })
+local opts = { prefix = '<leader>' }
+wk.register(mappings, opts,key_map)
   end
 }

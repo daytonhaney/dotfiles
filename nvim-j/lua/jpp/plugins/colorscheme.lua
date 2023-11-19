@@ -1,11 +1,21 @@
 return {
-  {
-    "bluz71/vim-nightfly-guicolors",
-    priority = 1000, -- make sure to load this before all the other start plugins
-    config = function()
+--  {
+--    "bluz71/vim-nightfly-guicolors",
+ --   priority = 1000, -- make sure to load this before all the other start plugins
+ --   config = function()
       -- load the colorscheme here
-      vim.cmd([[colorscheme nightfly]])
-    end,
+  --    vim.cmd([[colorscheme nightfly]])
+  --  end,
+--  },
+  {
+      'craftzdog/solarized-osaka.nvim',
+      priority = 1000,
+          opts = function ()
+              return {
+                  transparent = false
+              },
+          vim.cmd([[colorscheme solarized-osaka]])
+      end
   },
 }
   -- {

@@ -1,12 +1,11 @@
 
 return {
     {
-    -- snippet plugin
     "L3MON4D3/LuaSnip",
     lazy=true,
     dependencies = "rafamadriz/friendly-snippets",
     config = function()
-
+        require("luasnip")
 
 
     local ls = require("luasnip")
@@ -32,15 +31,12 @@ return {
         end
     end)
 
-    vim.keymap.set({"i","s"}, "<a-Up>", function() 
+    vim.keymap.set({"i","s"}, "<a-Up>", function()
         if ls.jumpable(1) then
             ls.jump(1)
         end
 
     end)
-    
-    vim.keymap.set({"i", "s"}, "<a-Right>")
-  --  +++++++++++++++++++++++++++++++++++++++++++++++++
-    end,
-    },
+end
+    }
 }

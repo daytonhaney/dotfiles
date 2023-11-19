@@ -1,4 +1,6 @@
 
+Benu this is a speling error 
+
 
 #### motivated by a simple, beginner friendly setup
 
@@ -9,25 +11,8 @@
 
 
 
-                                
-### replace 
-                                
-#### example
+#### Colorschemes
     
-    : .{name=123}
-
-#### visual line mode - <Shift> + v
-                                
-##### will remove all highlighted instances of .{name=123}
-                                                                                                
-    :s/ .{name=123}/       + <Enter> 
-                                        
-
-
-### indent/ dedent 
-
-     
-    2>j
-    
-
-
+    - habamax
+    - solarize-dark osaka enabled in jpp/lazy.lua
+    - nightfly
