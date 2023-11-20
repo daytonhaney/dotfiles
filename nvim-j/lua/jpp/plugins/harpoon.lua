@@ -34,7 +34,7 @@ return {
             width = vim.api.nvim_win_get_width(0) - 10,
           },
       })
-      -- vim.keymap.set("n", "<leader>ha", "<cmd>lua require('harpoon.mark').add_file()<cr>", {desc = "Add file to Harpoon"})
-      -- vim.keymap.set("n", "<leader>hs", "<cmd>lua require('harpoon.ui').toggle_quick_menu()<cr>", {desc = "Toggle Harpoon Menu"})
+      vim.keymap.set("n", "<leader>ha", "<cmd>lua require('harpoon.mark').add_file()<cr>", {desc = "Add file to Harpoon"})
+      vim.keymap.set("n", "<leader>hs", "<cmd>lua require('harpoon.ui').toggle_quick_menu()<cr>", {desc = "Toggle Harpoon Menu"})
     end
   }

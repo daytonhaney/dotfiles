@@ -23,6 +23,9 @@ vim.keymap.set('n', '<C-w>||', cmd 'WindowsMaximizeVertically')
 vim.keymap.set('n', '<C-w>--', cmd 'WindowsMaximizeHorizontally')
 vim.keymap.set('n', '<C-w>==', cmd 'WindowsEqualize')
 
+-- Create New File 
+keymap.set("n", "<leader>n", ":new file<CR>", {desc = "Create New File"})
+
 
 keymap.set("n", "<leader>s|", "<C-w>v", { desc = "Split window vertically" }) -- split window vertically
 keymap.set("n", "<leader>s-", "<C-w>s", { desc = "Split window horizontally" }) -- split window horizontally

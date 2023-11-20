@@ -1,7 +1,7 @@
 return {
   "nvimtools/none-ls.nvim", -- configure formatters & linters
   lazy = true,
-  -- event = { "BufReadPre", "BufNewFile" }, -- to enable uncomment this
+  event = { "BufReadPre", "BufNewFile" }, -- to enable uncomment this
   dependencies = {
     "jay-babu/mason-null-ls.nvim",
   },
@@ -18,7 +18,7 @@ return {
         "stylua", -- lua formatter
         "black", -- python formatter
         "pylint", -- python linter
-        "eslint_d", -- js linter
+        "eslint_d",
       },
     })
 
@@ -27,7 +27,7 @@ return {
     local diagnostics = null_ls.builtins.diagnostics -- to setup linters
 
     -- to setup format on save
-    local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
+    local augroup = vim.api.nvim_create_augroup("lspFormatting", {})
 
     -- configure null_ls
     null_ls.setup({
@@ -38,7 +38,7 @@ return {
         --  to disable file types use
         --  "formatting.prettier.with({disabled_filetypes: {}})" (see null-ls docs)
         formatting.prettier.with({
-          extra_filetypes = { "svelte" },
+            extra_filetypes = { "svelte" },
         }), -- js/ts formatter
         formatting.stylua, -- lua formatter
         formatting.isort,

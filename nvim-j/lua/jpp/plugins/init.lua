@@ -1,5 +1,7 @@
-
-
+-- here are plugs that right now dont really need a separate config file, 
+--
+--
+-- however harpoon do have separate files 
 
 return {
 
@@ -34,4 +36,13 @@ return {
     {
         "rainbow-delimiters.nvim"
     },
+    {
+    'codota/tabnine-nvim', build = "./dl_binaries.sh"
+    },
+	{
+    {
+  'Exafunction/codeium.vim',
+  event = 'BufEnter'
+        },
+	},
 }

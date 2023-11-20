@@ -1,6 +1,6 @@
--- dupilicate file lua/options.lua
--- nvim-mash
-
+-- highlight character on 80th line
+--highlight ColorColumn ctermbg=magenta
+--call matchadd("ColorColumn", "\%81v", 100)
 local cmd = vim.cmd
 local opt = vim.opt
 local diagnostic = vim.diagnostic
@@ -23,7 +23,7 @@ opt.tabline = ' '
 opt.backup = false
 
 opt.relativenumber= true
---opt.nu = true
+opt.nu = true
 --opt.numberwidth = 3
 --opt.ruler = false
 opt.writebackup = false
@@ -42,14 +42,14 @@ opt.mouse = "a" -- Mouse support for noobs
 opt.cursorline = true
 opt.tabstop = 4
 opt.softtabstop = 4
---opt.shiftwidth = 0
---opt.autoindent = true
---opt.expandtab = true
+opt.shiftwidth = 0
+opt.autoindent = true
+opt.expandtab = true
 opt.fillchars:append('eob:~')
 opt.listchars:append "space: "
 cmd('set lazyredraw')
 cmd('set nolist')
---opt.laststatus = 0                  -- Global Status
+opt.laststatus = 0                  -- Global Status
 diagnostic.config { signs = true } -- Removing diagnostic column
 opt.updatetime = 250
 --opt.shadafile = "NONE"
@@ -80,7 +80,7 @@ local builtins = {
   "zipPlugin",
   "logipat",
   "matchit",
-  "tutor",
+--  "tutor",
   "rplugin",
   "syntax",
   "synmenu",

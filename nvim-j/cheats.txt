@@ -1,0 +1,31 @@
+Use 
+    :! 
+to enter terminal commands from neovim
+
+example:
+
+    :! cargo install tree-sitter-cli
+
+
+Highlight:
+
+    highlight page: ggVG 
+    highlight line (n mode): <Enter>v
+
+
+
+
+
+Select all and remove:
+         
+     visual line mode:s/ foo /  + <Enter> 
+
+
+
+
+
+Move to end of current word: 
+
+    (i mode): b
+            : lb 
+
