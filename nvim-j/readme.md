@@ -13,6 +13,5 @@ Benu this is a speling error
 
 #### Colorschemes
     
-    - habamax
     - solarize-dark osaka enabled in jpp/lazy.lua
     - nightfly

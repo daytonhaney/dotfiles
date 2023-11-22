@@ -45,7 +45,7 @@ return {
 				},
                 
 
-				['<Tab>'] = cmp.mapping(function(fallback)
+				['<Enter>'] = cmp.mapping(function(fallback) -- <TAB> messes up
 				  if cmp.visible() then
 					cmp.select_next_item()
 				  elseif luasnip.expand_or_jumpable() then

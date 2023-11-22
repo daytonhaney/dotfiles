@@ -1,6 +1,6 @@
-Use 
-    :! 
-to enter terminal commands from neovim
+Useful commands 
+
+    :!   to enter terminal commands from neovim
 
 example:
 
@@ -29,3 +29,20 @@ Move to end of current word:
     (i mode): b
             : lb 
 
+
+Thin border between split windows (if needed)
+
+    1. :set laststatus=3 
+    2. :highlight WinSeparator guibg=None
+
+
+
+--vim.api.nvim_create_autocmd("CursorHold", { callback = WakeUp, timeout_ms = 10000 })
+--vim.keymap.set("n", "<leader>u", NeovimTalk)
+
+-- autocomplete  ctrl + g. in cmp.lua
+--function NeovimTalk()
+--	print("Hello, Welcome to Neovim!")
+--end
+
+-- vim.api.nvim_create_user_command("TalkDrityToMe", NeovimTalk, {})

@@ -81,8 +81,8 @@ local mappings = {
   },
     s = {
         name = "Split screen",
-        v = {":<space>s|","Verticle Split",},
-        h = {":<space>s-","Horizontal Split"},
+        ["|"] = {":<space>s|","Verticle Split",},
+        ["-"] = {":<space>s-","Horizontal Split"},
     }
 }
 -- Map Enter key to select in Telescope
