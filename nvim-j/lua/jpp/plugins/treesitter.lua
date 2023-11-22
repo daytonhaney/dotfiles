@@ -38,7 +38,7 @@ return {
 				"prisma",
 				"markdown",
 				"markdown_inline",
-				"volar",
+				"vue",
 				"bash",
 				"lua",
 				"gitignore",
