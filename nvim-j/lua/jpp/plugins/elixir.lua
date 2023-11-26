@@ -1,36 +1,9 @@
-local colorscheme = require("jpp.plugins.colorscheme")
---vim.g.mapleader = " "
-local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-if not vim.loop.fs_stat(lazypath) then
-	vim.fn.system({
-		"git",
-		"clone",
-		"--filter=blob:none",
-		"https://github.com/folke/lazy.nvim.git",
-		"--branch=stable", -- latest stable release
-		lazypath,
-	})
-end
-vim.opt.rtp:prepend(lazypath)
-
-require("lazy").setup({ { import = "jpp.plugins" }, { import = "jpp.plugins.lsp" } }, {
-	install = {
-		--   colorscheme = { "nightfly" },
-		colorscheme = { "solarized-okaka", "nightfly" },
-	},
-	checker = {
-		enabled = true,
-		notify = false,
-	},
-	change_detection = {
-		notify = false,
-	},
-	{
+return {
 		"elixir-tools/elixir-tools.nvim",
 		version = "*",
 		event = { "BufReadPre", "BufNewFile" },
 		config = function()
-			local elixir = require("lua.jpp.plugins.elixir")
+			local elixir = require("elixir")
 			local elixirls = require("elixir.elixirls")
 
 			elixir.setup({
@@ -53,5 +26,4 @@ require("lazy").setup({ { import = "jpp.plugins" }, { import = "jpp.plugins.lsp"
 		dependencies = {
 			"nvim-lua/plenary.nvim",
 		},
-	},
-})
+}

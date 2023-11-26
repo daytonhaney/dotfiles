@@ -8,7 +8,7 @@ return {
 	{ "akinsho/toggleterm.nvim", version = "*", config = true },
 	-- or
 	-- {'akinsho/toggleterm.nvim', version = "*", opts = {--[[ things you want to change go here]]}},
-	{ "vidocqh/auto-indent.nvim" },
+	-- { "vidocqh/auto-indent.nvim" },
 	{ "nvim-lua/popup.nvim" },
 	{ "christoomey/vim-tmux-navigator" },
 	{ "bluz71/vim-nightfly-guicolors" },
@@ -34,9 +34,9 @@ return {
 	{
 		"focus.nvim",
 	},
-	{
-		"rainbow-delimiters.nvim",
-	},
+    --	{
+	--	"rainbow-delimiters.nvim",
+	--   },
 	{
 		"nvim-treesitter/playground",
 	},

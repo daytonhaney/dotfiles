@@ -43,11 +43,12 @@ opt.foldlevelstart = 99
 opt.foldenable = true
 opt.mouse = "a" -- Mouse support for noobs
 opt.cursorline = true
-opt.tabstop = 4
-opt.softtabstop = 4
-opt.shiftwidth = 0
+opt.tabstop=4
+opt.shiftwidth=4
+opt.expandtab=true
+opt.smartindent=true
+opt.guicursor=""
 --opt.autoindent = true
-opt.expandtab = true
 opt.fillchars:append("eob:~")
 opt.listchars:append("space: ")
 cmd("set lazyredraw")
@@ -59,7 +60,7 @@ opt.shadafile = "NONE"
 opt.shadafile = ""
 opt.swapfile = false
 opt.shortmess:append("sI")
-
+-- set guicursor=i:block
 opt.smartindent = true
 --- Disabling some built in plugins
 local builtins = {

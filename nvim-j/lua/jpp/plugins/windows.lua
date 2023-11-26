@@ -3,6 +3,7 @@ return { "anuvyklack/windows.nvim",
       "anuvyklack/middleclass",
       "anuvyklack/animation.nvim"
    },
+   lazy = true,
    config = function()
       vim.o.winwidth = 10
       vim.o.winminwidth = 10

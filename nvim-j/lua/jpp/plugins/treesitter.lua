@@ -1,31 +1,30 @@
 return {
-	  "nvim-treesitter/nvim-treesitter",
-	  event = { "BufReadPre", "BufNewFile" },
-	  build = ":TSUpdate",
-	  dependencies = {
+	"nvim-treesitter/nvim-treesitter",
+	event = { "BufReadPre", "BufNewFile" },
+	build = ":TSUpdate",
+	dependencies = {
 		"nvim-treesitter/nvim-treesitter-textobjects",
 		"windwp/nvim-ts-autotag",
-	  },
-	  config = function()
+	},
+	config = function()
 		-- import nvim-treesitter plugin
-		local treesitter = require "nvim-treesitter.configs".setup {
+		local treesitter = require("nvim-treesitter.configs").setup({
 			playground = {
-			enable = true,
-			disable = {},
-			updatetime = 25, -- Debounced time for highlighting nodes in the playground from source code
-			persist_queries = false, -- Whether the query persists across vim sessions
-			keybindings = {
-				toggle_query_editor = 'o',
-				toggle_hl_groups = 'i',
-				toggle_injected_languages = 't',
-				toggle_anonymous_nodes = 'a',
-				toggle_language_display = 'I',
-				focus_language = 'f',
-				unfocus_language = 'F',
-				update = 'R',
-				goto_node = '<cr>',
-				show_help = '?',
-			},
+				enable = true,
+				updatetime = 25, -- Debounced time for highlighting nodes in the playground from source code
+				persist_queries = false, -- Whether the query persists across vim sessions
+				keybindings = {
+					toggle_query_editor = "o",
+					toggle_hl_groups = "i",
+					toggle_injected_languages = "t",
+					toggle_anonymous_nodes = "a",
+					toggle_language_display = "I",
+					focus_language = "f",
+					unfocus_language = "F",
+					update = "R",
+					goto_node = "<cr>",
+					show_help = "?",
+				},
 			},
 			ensure_installed = {
 				"json",
@@ -35,13 +34,14 @@ return {
 				"html",
 				"rust",
 				"css",
-				"prisma",
 				"markdown",
 				"markdown_inline",
 				"vue",
-				"bash",
 				"lua",
 				"gitignore",
+				"elixir",
+				"eex",
+				"heex",
 			},
 			incremental_selection = {
 				enable = true,
@@ -54,12 +54,13 @@ return {
 			},
 			highlight = {
 				enable = true,
-			  },
-			  -- enable indentation
-			  indent = { enable = true },
-			  -- enable autotagging (w/ nvim-ts-autotag plugin)
-			  autotag = {
+			},
+			-- enable indentation
+			indent = { enable = true },
+			-- enable autotagging (w/ nvim-ts-autotag plugin)
+			autotag = {
 				enable = true,
-			  },
-			}end
-		}
+			},
+		})
+	end,
+}

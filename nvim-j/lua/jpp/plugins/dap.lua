@@ -17,6 +17,7 @@ return {
     'leoluz/nvim-dap-go',
   },
   config = function()
+    lazy = true
     local dap = require 'dap'
     local dapui = require 'dapui'
 

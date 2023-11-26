@@ -144,6 +144,11 @@ return {
       capabilities = capabilities,
       on_attach = on_attach,
     })
+    require('lspconfig').elixirls.setup {
+      cmd = { "/home/user/.config/.elixir_ls/elixir-tools.nvim/downloads/elixir-lsp/elixir-ls/tags_v0.15.1/scripts/language_server.sh" },
+      on_attach = on_attach,
+      capabilities = capabilities
+    }
     -- configure lua server (with special settings)
     lspconfig["lua_ls"].setup({
       capabilities = capabilities,

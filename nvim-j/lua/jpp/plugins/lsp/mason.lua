@@ -41,6 +41,7 @@ return {
         "emmet_ls",
         "marksman",
         "astro",
+        "elixirls"
        -- "prismals",
       },
       -- auto-install configured servers (with lspconfig)
