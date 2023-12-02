@@ -42,7 +42,6 @@ return {
         "marksman",
         "astro",
         "elixirls"
-       -- "prismals",
       },
       -- auto-install configured servers (with lspconfig)
       automatic_installation = true, -- not the same as ensure_installed
