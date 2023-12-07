@@ -1,0 +1,3 @@
+return {
+	"daytonhaney/dhalsim.nvim",
+}

@@ -30,7 +30,7 @@ return {
 			tabline_prefix = "   ",
 			tabline_suffix = "   ",
 			menu = {
-				width = vim.api.nvim_win_get_width(0) - 4,
+				width = vim.api.nvim_win_get_width(0) - 10,
 			},
 		})
 		vim.keymap.set(
