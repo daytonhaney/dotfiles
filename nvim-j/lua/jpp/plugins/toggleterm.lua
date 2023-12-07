@@ -4,9 +4,9 @@ return {
 		config = true,
 		cmd = "ToggleTerm",
 		build = ":ToggleTerm",
-		keys = { { "<leader>t", "<cmd>ToggleTerm<cr>", desc = "Toggle floating terminal" } },
+		keys = { { "<leader>tt", "<cmd>ToggleTerm<cr>", desc = "Toggle floating terminal" } },
 		opts = {
-			open_mapping = [[<Fleader>t]],
+			open_mapping = [[<leader>tt]],
 			direction = "horizontal",
 			shade_filetypes = {},
 			hide_numbers = true,
