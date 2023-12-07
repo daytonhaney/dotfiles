@@ -1,4 +1,3 @@
-#### made with https://dotfyle.com/
 # dotfiles/nvim-j
 
 <a href="https://dotfyle.com/daytonhaney/dotfiles-nvim-j"><img src="https://dotfyle.com/daytonhaney/dotfiles-nvim-j/badges/plugins?style=flat" /></a>
