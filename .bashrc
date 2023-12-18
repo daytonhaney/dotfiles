@@ -1,11 +1,5 @@
 # Fig pre block. Keep at the top of this file.
-[[ -f "$HOME/.fig/shell/bashrc.pre.bash" ]] && builtin source "$HOME/.fig/shell/bashrc.pre.bash"
-# Enable the subsequent settings only in interactive sessions
-case $- in
-*i*) ;;
-*) return ;;
-esac
-export NVIM_APPNAME="nvim-Lazyman"
+export NVIM_APPNAME="nvim-j"
 export PATH=$PATH:~/.local/share/nvim-Kodo/mason/bin
 # Path to your oh-my-bash installation.
 export OSH='/home/user/.oh-my-bash'

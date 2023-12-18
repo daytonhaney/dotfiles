@@ -1,1 +1,1 @@
-custom scripts / mostly found online 
+configuration manager - linux
