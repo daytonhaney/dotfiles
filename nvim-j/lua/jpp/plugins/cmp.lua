@@ -43,8 +43,8 @@ return {
 						behavior = cmp.ConfirmBehavior.Replace,
 						select = true,
 					}),
-
-					["<Tab>"] = cmp.mapping(function(fallback) -- <TAB> messes up
+					--prefs for complete on <Tab> vs. complete on <Enter> can be founnd here, check codium.lua for more
+					["<Tab>"] = cmp.mapping(function(fallback)
 						if cmp.visible() then
 							cmp.select_next_item()
 						elseif luasnip.expand_or_jumpable() then
