@@ -1,3 +1,5 @@
+Followed nvim-josean (https://github.com/josean-dev/dev-environment-files) - Easy to ready scaffold for customization. 
+
 # dotfiles/nvim-j
 
 <a href="https://dotfyle.com/daytonhaney/dotfiles-nvim-j"><img src="https://dotfyle.com/daytonhaney/dotfiles-nvim-j/badges/plugins?style=flat" /></a>
