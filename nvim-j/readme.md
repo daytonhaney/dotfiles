@@ -1,4 +1,4 @@
-Followed nvim-josean (https://github.com/josean-dev/dev-environment-files) - Easy to ready scaffold for customization. 
+Followed nvim-josean [https://github.com/josean-dev/dev-environment-files] - Easy to ready scaffold for customization. 
 
 # dotfiles/nvim-j
 
