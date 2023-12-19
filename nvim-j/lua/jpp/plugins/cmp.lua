@@ -44,7 +44,7 @@ return {
 						select = true,
 					}),
 
-					["<CR>"] = cmp.mapping(function(fallback) -- <TAB> messes up
+					["<Tab>"] = cmp.mapping(function(fallback) -- <TAB> messes up
 						if cmp.visible() then
 							cmp.select_next_item()
 						elseif luasnip.expand_or_jumpable() then

@@ -1,3 +1,6 @@
+
+ctrl + g = autocomplete
+
 Useful commands 
 
     :!   to enter terminal commands from neovim
