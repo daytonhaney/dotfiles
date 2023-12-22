@@ -1,14 +1,14 @@
-# Fig pre block. Keep at the top of this file.
-[[ -f "$HOME/.fig/shell/zshrc.pre.zsh" ]] && builtin source "$HOME/.fig/shell/zshrc.pre.zsh"
-# Start Znap
+# clone and build for awaesome fonts on top of nerd fonts
+# https://github.com/gabrielelana/awesome-terminal-fonts
+
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 export NVIM_APPNAME="nvim-j"
 export PATH=$PATH:~/.local/share/nvim-Kodo/mason/bin
-
+export PATH=$PATH:/usr/share/swift/usr/bin
 export ZSH="$HOME/.oh-my-zsh"
-
+. "$HOME/.asdf/asdf.sh"
 
 ZSH_THEME="robbyrussell"
 
@@ -27,7 +27,7 @@ export BUN_INSTALL="$HOME/.bun"
 export PATH=$BUN_INSTALL/bin:$PATH
 
 if [[ -n $SSH_CONNECTION ]]; then
-  export EDITOR='vim'
+  export EDITOR='nvim-j'
  else
    export EDITOR='nvim-j'
 fi
@@ -40,10 +40,10 @@ alias ll='exa -lba  --color always --icons'
 alias llm='exa -lb--sort=modified'
 alias la='exa -lbhHigUmuSa --time-style=long-iso --color-scale'
 alias lx='exa -lbhHigUmuSa@ --time-style=long-iso --color-scale'
-alias code='code-insiders'
+alias code='codium'
 alias lS='exa -1'
 alias lt='exa --tree --level=2'
-
+alias nvim-j='nvim-Kodo'
 source=.config/nvim-Lazyman/.lazymanrc
 [ -f ~/.config/nvim-Lazyman/.lazymanrc ] && source ~/.config/nvim-Lazyman/.lazymanrc
 [ -d ${HOME}/.luarocks/bin ] && {
@@ -53,6 +53,10 @@ source=.config/nvim-Lazyman/.lazymanrc
 [ -d ${HOME}/.local/share/bob/nvim-bin ] && {
 export PATH="${HOME}/.local/share/bob/nvim-bin${PATH:+:${PATH}}"
 export STARSHIP_CONFIG=~/.config/starship.toml
-eval "$(starship init zsh)"
-source <(/usr/local/bin/starship init zsh --print-full-init)%
+export PATH=$PATH:~/.local/share/nvim/mason/bin
 source /home/user/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+if command -v zoxide > /dev/null; then
+  eval "$(zoxide init zsh)"
+fi
+[ -f ~/.config/nvim-Lazyman/.nvimsbind ] && source ~/.config/nvim-Lazyman/.nvimsbind
+

@@ -41,9 +41,7 @@ return {
 		build = "./dl_binaries.sh",
 	},
 	{
-		{
-			"Exafunction/codeium.vim",
-			event = "BufEnter",
-		},
+		"Exafunction/codeium.vim",
+		event = "BufEnter",
 	},
 }
