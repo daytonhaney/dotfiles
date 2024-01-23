@@ -1,5 +1,4 @@
 
-lua/jpp/plugins/.elixir_l
-lua/jpp/plugins/.elixir_ls/elixir-ls
-useage_data.json
+lua/jpp/plugins/.elixir_ls*
+*useage_data.json
 
