@@ -1,11 +1,8 @@
 local M = {}
 local stats = require("lazy").stats()
-M.statusstyle = 'fancy'
+M.statusstyle = "fancy"
 local logos = setmetatable({
-    
-TEXT_NAME =
-
-    [[
+	TEXT_NAME = [[
       █████████████████████████████████████
       ██                                 ██
       ██       ██    ███████   ███████   ██
@@ -20,7 +17,7 @@ TEXT_NAME =
 
     ]],
 
-UWU = [[
+	UWU = [[
 
       ⡆⣸⡟⣼⣯⠏⣾⣿⢸⣿⢸⣿⣿⣿⣿⣿⣿⡟⠸⠁⢹⡿⣿⣿⢻⣿⣿⣿⣿⠄
       ⡇⡟⣸⢟⣫⡅⣶⢆⡶⡆⣿⣿⣿⣿⣿⢿⣛⠃⠰⠆⠈⠁⠈⠙⠈⠻⣿⢹⡏⠄
@@ -32,7 +29,7 @@ UWU = [[
       ⣿⠄⠄⠘⢿⣿⣿⣿⣿⣿⣿⢛⣿⣿⣿⣿⣿⣿⣿⣿⣿⣟⢄⡆⠄⢀⣪⡆⠄⣿
     ]],
 
-UWU2 = [[
+	UWU2 = [[
              █████████████████
          ████▌█████▌█ ████████▐▀██▀
        ▄█████ █████▌ █ ▀██████▌█▄▄▀▄
@@ -45,7 +42,7 @@ UWU2 = [[
             █▀██▄▄▄ ▄▄▀▀▒█▀█
     ]],
 
-EVIL = [[
+	EVIL = [[
         "            :h-                                  Nhy`               ",
         "           -mh.                           h.    `Ndho               ",
         "           hmh+                          oNm.   oNdhh               ",
@@ -84,7 +81,7 @@ EVIL = [[
         "",        
     ]],
 
-bison =[[
+	bison = [[
                .                                                      .      
           .n                   .                 .                  n.          
      .   .dP                  dP                   9b                 9b.    .   
@@ -108,7 +105,7 @@ bison =[[
                                   `             '                                
 
     ]],
-chad= [[
+	chad = [[
                                                                     
                             ⣿⣿⣿⣿⡏⣀⠀⠀⠀⠀⠀⠀⠀⣀⣤⣤⣤⣄⡀⠀⠀⠀⠀⠀⠀⠀⠙⢿⣿⣿
                             ⣿⣿⣿⢏⣴⣿⣷⠀⠀⠀⠀⠀⢾⣿⣿⣿⣿⣿⣿⡆⠀⠀⠀⠀⠀⠀⠀⠈⣿⣿
@@ -129,31 +126,29 @@ chad= [[
                             ⣿⣿⣿⣿⣿⣦⣄⣀⣀⣀⣀⠀⠀⠀⠀⠘⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
                           
     ]],
-  },
-  {
-    __index = function(logos, key)
-      return logos[key]
-    end,
-  }
-)
+}, {
+	__index = function(logos, key)
+		return logos[key]
+	end,
+})
 M.dashboard = {
-  header = vim.split(logos.TEXT_NAME, "\n"),
-  buttons = {
-    {"💡     new file","SPC n  "},
-    { "🔭     find file", "SPC f f" },
-    { "🗄️     recent files", "SPC f g" },
-    { "🔍     find word", "SPC f r" },
-    {"📌     harpoon", "SPC SPC"},
-    {"🔧     menu", "SPC"},
-  },
-  message = {
-    "  ",
-  },
-  footer = function()
-    local stats = require("lazy").stats()
-    local ms = (math.floor(stats.startuptime * 100 + 0.5) / 100)
-    return { "⚡ Neovim loaded " .. stats.count .. " plugins in " .. ms .. "ms" }
-  end,
+	header = vim.split(logos.bison, "\n"),
+	buttons = {
+		{ "💡     new file", "SPC n  " },
+		{ "🔭     find file", "SPC f f" },
+		{ "🗄️     recent files", "SPC f g" },
+		{ "🔍     find word", "SPC f r" },
+		{ "📌     harpoon", "SPC SPC" },
+		{ "🔧     menu", "SPC" },
+	},
+	message = {
+		" ",
+	},
+	footer = function()
+		local stats = require("lazy").stats()
+		local ms = (math.floor(stats.startuptime * 100 + 0.5) / 100)
+		return { "⚡ Neovim loaded " .. stats.count .. " plugins in " .. ms .. "ms" }
+	end,
 }
 
 return M
