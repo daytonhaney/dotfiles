@@ -1,9 +1,5 @@
-# clone and build for awaesome fonts on top of nerd fonts
-# https://github.com/gabrielelana/awesome-terminal-fonts
-
 export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 export NVIM_APPNAME="nvim-j"
 export PATH=$PATH:~/.local/share/nvim-Kodo/mason/bin
 export PATH=$PATH:/usr/share/swift/usr/bin
@@ -17,12 +13,10 @@ COMPLETION_WAITING_DOTS="true"
 export PATH=$PATH:~/zig-0.11.0
 
 
-plugins=(git)
+plugins=(zsh-syntax-highlighting zsh-autosuggestions git)
 
 
 source $ZSH/oh-my-zsh.sh
-
-source ./.config/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 export BUN_INSTALL="$HOME/.bun"
 export PATH=$BUN_INSTALL/bin:$PATH
 
@@ -34,7 +28,7 @@ fi
 
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#ff00ff,bg=cyan,bold,underline"
 
-alias ls='exa -lbF'
+alias ls='exa -lbF --icons'
 alias l='exa -lbF --icons'
 alias ll='exa -lba  --color always --icons'
 alias llm='exa -lb--sort=modified'
@@ -42,7 +36,7 @@ alias la='exa -lbhHigUmuSa --time-style=long-iso --color-scale'
 alias lx='exa -lbhHigUmuSa@ --time-style=long-iso --color-scale'
 alias code='codium'
 alias lS='exa -1'
-alias lt='exa --tree --level=2'
+alias lt='exa --tree --level=99'
 alias nvim-j='nvim-Kodo'
 source=.config/nvim-Lazyman/.lazymanrc
 [ -f ~/.config/nvim-Lazyman/.lazymanrc ] && source ~/.config/nvim-Lazyman/.lazymanrc
@@ -54,9 +48,9 @@ source=.config/nvim-Lazyman/.lazymanrc
 export PATH="${HOME}/.local/share/bob/nvim-bin${PATH:+:${PATH}}"
 export STARSHIP_CONFIG=~/.config/starship.toml
 export PATH=$PATH:~/.local/share/nvim/mason/bin
-source /home/user/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 if command -v zoxide > /dev/null; then
   eval "$(zoxide init zsh)"
 fi
 [ -f ~/.config/nvim-Lazyman/.nvimsbind ] && source ~/.config/nvim-Lazyman/.nvimsbind
+source /home/user/.oh-my-zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
