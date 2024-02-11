@@ -1,6 +1,7 @@
--- highlight character on 80th line
---highlight ColorColumn ctermbg=magenta
---call matchadd("ColorColumn", "\%81v", 100)
+-- autocmd FileType python nnoremap <buffer> <F5> :w<cr>:exec '!clear'<cr>:exec '!python3' shellescape(expand('%:p'), 1)<cr>
+-- highlight character on 80th column
+-- highlight ColorColumn ctermbg=magenta
+-- call matchadd("ColorColumn", "\%81v", 100)
 local cmd = vim.cmd
 local opt = vim.opt
 local diagnostic = vim.diagnostic
@@ -22,10 +23,8 @@ opt.conceallevel = 0
 opt.showtabline = 3
 opt.tabline = " "
 opt.showmode = false
-
 opt.backup = false
-
-opt.relativenumber = true
+--opt.relativenumber = true
 opt.nu = true
 opt.numberwidth = 3
 opt.ruler = false
@@ -43,11 +42,11 @@ opt.foldlevelstart = 99
 opt.foldenable = true
 opt.mouse = "a" -- Mouse support for noobs
 opt.cursorline = true
-opt.tabstop=4
-opt.shiftwidth=4
-opt.expandtab=true
-opt.smartindent=true
-opt.guicursor=""
+opt.tabstop = 4
+opt.shiftwidth = 4
+opt.expandtab = true
+opt.smartindent = true
+opt.guicursor = ""
 --opt.autoindent = true
 opt.fillchars:append("eob:~")
 opt.listchars:append("space: ")
@@ -65,8 +64,8 @@ opt.smartindent = true
 --- Disabling some built in plugins
 local builtins = {
 	"2html_plugin",
-	"getscript",
-	"getscriptPlugin",
+	--"getscript",
+	--"getscriptPlugin",
 	"gzip",
 	"logipat",
 	"netrw",
@@ -74,7 +73,8 @@ local builtins = {
 	"netrwSettings",
 	"netrwFileHandlers",
 	"matchit",
-	"matchparen",
+	--"matchparen",
+
 	"tar",
 	"tarPlugin",
 	"rrhelper",

@@ -90,7 +90,7 @@ local logos = setmetatable({
    9XXb._       _.dXXXXb dXXXXbo.                 .odXXXXb dXXXXb._       _.dXXP 
     9XXXXXXXXXXXXXXXXXXXVXXXXXXXXOo.           .oOXXXXXXXXVXXXXXXXXXXXXXXXXXXXP  
      `9XXXXXXXXXXXXXXXXXXXXX'~   ~`OOO8b   d8OOO'~   ~`XXXXXXXXXXXXXXXXXXXXXP'   
-       `9XXXXXXXXXXXP' `9XX'   DIE    `98v8P'  HUMAN   `XXP' `9XXXXXXXXXXXP'     
+       `9XXXXXXXXXXXP' `9XX'          `98v8P'         `XXP' `9XXXXXXXXXXXP'     
            ~~~~~~~       9X.          .db|db.          .XP       ~~~~~~~         
                            )b.  .dbo.dP'`v'`9b.odb.  .dX(                        
                          ,dXXXXXXXXXXXb     dXXXXXXXXXXXb.                       
@@ -126,7 +126,17 @@ local logos = setmetatable({
                             ⣿⣿⣿⣿⣿⣦⣄⣀⣀⣀⣀⠀⠀⠀⠀⠘⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
                           
     ]],
+	_neovim_ = [[ 
+               ████ ██████           █████      ██
+              ███████████             █████ 
+              █████████ ███████████████████ ███   ███████████
+             █████████  ███    █████████████ █████ ██████████████
+            █████████ ██████████ █████████ █████ █████ ████ █████
+          ███████████ ███    ███ █████████ █████ █████ ████ █████ 
+         ██████  █████████████████████ ████ █████ █████ ████ ██████
+ ]],
 }, {
+
 	__index = function(logos, key)
 		return logos[key]
 	end,

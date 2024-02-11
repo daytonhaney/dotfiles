@@ -14,14 +14,11 @@ local function cmd(command)
 	return table.concat({ "<Cmd>", command, "<CR>" })
 end
 
-
-
 -- Create New File
 keymap.set("n", "<leader>n", ":new file<CR>", { desc = "Create New File" })
 
 keymap.set("n", "<leader>|", "<C-w>v", { desc = "Split window vertically" })
 keymap.set("n", "<leader>-", "<C-w>s", { desc = "Split window horizontally" })
-keymap.set("n", "<leader>=", "<C-w>=", { desc = "Make splits equal size" })
 
 keymap.set("n", "<leader>ff", "<cmd>Telescope find_files<cr>", { desc = "Fuzzy find files in cwd" })
 keymap.set("n", "<leader>fr", "<cmd>Telescope oldfiles<cr>", { desc = "Fuzzy find recent files" })

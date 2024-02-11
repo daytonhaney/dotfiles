@@ -1,4 +1,5 @@
 return {
+
 	"nvim-tree/nvim-tree.lua",
 	dependencies = { "nvim-tree/nvim-web-devicons" },
 	config = function()
@@ -18,7 +19,6 @@ return {
 				width = 35,
 				relativenumber = true,
 			},
-			-- change folder arrow icons
 			renderer = {
 				indent_markers = {
 					enable = true,
@@ -32,9 +32,6 @@ return {
 					},
 				},
 			},
-			-- disable window_picker for
-			-- explorer to work well with
-			-- window splits
 			actions = {
 				open_file = {
 					window_picker = {
@@ -64,7 +61,3 @@ return {
 		keymap.set("n", "<leader>er", "<cmd>NvimTreeRefresh<CR>", { desc = "Refresh file explorer" }) -- refresh file explorer
 	end,
 }
-
--- <leader>ee opens the file tree and returns cursor to cmd bar
-
--- <leader>ef works better
