@@ -38,10 +38,13 @@ return {
 				"markdown_inline",
 				"vue",
 				"lua",
+				"bash",
 				"gitignore",
-				"elixir",
-				"eex",
-				"heex",
+				"python",
+				"vim",
+				--"elixir",
+				--"eex",
+				--"heex",
 			},
 			incremental_selection = {
 				enable = true,
@@ -58,9 +61,14 @@ return {
 			-- enable indentation
 			indent = { enable = true },
 			-- enable autotagging (w/ nvim-ts-autotag plugin)
+
+			rainbow = {
+				enable = true,
+			},
 			autotag = {
 				enable = true,
 			},
+			auto_install = true,
 		})
 	end,
 }
