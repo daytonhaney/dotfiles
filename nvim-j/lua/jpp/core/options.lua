@@ -1,7 +1,4 @@
 -- autocmd FileType python nnoremap <buffer> <F5> :w<cr>:exec '!clear'<cr>:exec '!python3' shellescape(expand('%:p'), 1)<cr>
--- highlight character on 80th column
--- highlight ColorColumn ctermbg=magenta
--- call matchadd("ColorColumn", "\%81v", 100)
 local cmd = vim.cmd
 local opt = vim.opt
 local diagnostic = vim.diagnostic
@@ -74,7 +71,6 @@ local builtins = {
 	"netrwFileHandlers",
 	"matchit",
 	--"matchparen",
-
 	"tar",
 	"tarPlugin",
 	"rrhelper",
@@ -90,7 +86,7 @@ local builtins = {
 	"syntax",
 	"synmenu",
 	"optwin",
-	--"compiler",
+	"compiler",
 	"bugreport",
 	"ftplugin",
 	"archlinux",
@@ -106,17 +102,33 @@ vim.api.nvim_set_hl(0, "DiffDelete", { fg = "#393939", bg = "#161616" })
 vim.api.nvim_set_hl(0, "DiffChange", { bg = "#161616" })
 vim.api.nvim_set_hl(0, "DiffText", { bg = "#161616" })
 
+-- hide ruler but highlight any character red that touches 80th column
+-- (add after highlights etc)
+
+vim.cmd([[
+  augroup Highlight_on_80column
+    autocmd!
+    autocmd WinEnter,BufWinEnter * lua highlight_char_on_80th()
+  augroup END
+]])
+
+function highlight_char_on_80th()
+	vim.cmd([[
+    highlight Red80 ctermbg=red ctermfg=white guibg=#ff0000 guifg=#ffffff
+    match Red80 /\%80v./
+  ]])
+end
+
 -- neovide stuff
 if vim.g.neovide then
-	-- vim.g.neovide_transparency = 0.8
+	vim.g.neovide_transparency = 0.8
 	vim.g.neovide_no_idle = true
 	vim.g.neovide_refresh_rate = 165
 	vim.g.neovide_padding_top = 45
 	vim.g.neovide_padding_bottom = 40
 	vim.g.neovide_padding_left = 40
 	vim.g.neovide_padding_right = 20
-	vim.opt.guifont = { "Iosevka Nerd Font Mono Bold", ":h20" }
-	-- vim.opt.guifont = { "FiraCode Nerd Font", ":h20" }
+	vim.opt.guifont = { "CaskaydiaCove Nerd Font Mono", ":h20" }
 end
 
 for _, plugin in ipairs(builtins) do
