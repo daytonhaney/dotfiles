@@ -13,7 +13,6 @@ opt.pumheight = 10
 opt.fileencoding = "utf-8"
 opt.splitbelow = true
 opt.list = true
-
 opt.splitright = true
 opt.termguicolors = true
 opt.conceallevel = 0
@@ -61,16 +60,16 @@ opt.smartindent = true
 --- Disabling some built in plugins
 local builtins = {
 	"2html_plugin",
-	--"getscript",
-	--"getscriptPlugin",
+	-- "getscript",
+	-- "getscriptPlugin",
 	"gzip",
 	"logipat",
 	"netrw",
 	"netrwPlugin",
 	"netrwSettings",
 	"netrwFileHandlers",
-	"matchit",
-	--"matchparen",
+	-- "matchit",
+	-- "matchparen",
 	"tar",
 	"tarPlugin",
 	"rrhelper",
@@ -80,12 +79,12 @@ local builtins = {
 	"zip",
 	"zipPlugin",
 	"logipat",
-	"matchit",
+	-- "matchit",
 	--  "tutor",
 	"rplugin",
 	"syntax",
 	"synmenu",
-	"optwin",
+	--	"optwin",
 	"compiler",
 	"bugreport",
 	"ftplugin",
@@ -102,8 +101,8 @@ vim.api.nvim_set_hl(0, "DiffDelete", { fg = "#393939", bg = "#161616" })
 vim.api.nvim_set_hl(0, "DiffChange", { bg = "#161616" })
 vim.api.nvim_set_hl(0, "DiffText", { bg = "#161616" })
 
--- hide ruler but highlight any character red that touches 80th column
--- (add after highlights etc)
+-- hide ruler but highlight any character red that touches 81st column
+-- alacritty not working, kitty ok
 
 vim.cmd([[
   augroup Highlight_on_80column
@@ -112,10 +111,10 @@ vim.cmd([[
   augroup END
 ]])
 
-function highlight_char_on_80th()
+function highlight_chars_column_81()
 	vim.cmd([[
     highlight Red80 ctermbg=red ctermfg=white guibg=#ff0000 guifg=#ffffff
-    match Red80 /\%80v./
+    match Red80 /\%81v./
   ]])
 end
 
