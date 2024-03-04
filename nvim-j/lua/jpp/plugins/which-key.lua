@@ -58,7 +58,7 @@ return {
 				t = { ":ToggleTerm<CR>", "Bash Zsh Fish" },
 			},
 			p = {
-				name = "Processes",
+				name = "Processes (TOP)",
 				p = { ":vsplit term://top<CR>", "View Processes" }, -- may change
 			},
 			e = {

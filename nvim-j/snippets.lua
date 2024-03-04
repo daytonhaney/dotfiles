@@ -273,3 +273,5 @@ local list_snips = function()
 end
 
 vim.api.nvim_create_user_command("SnipList", list_snips, {})
+
+vim.keymap.set("n", "<leader>SS", SnipList, { desc = "List Snippets" })

@@ -13,7 +13,6 @@ opt.pumheight = 10
 opt.fileencoding = "utf-8"
 opt.splitbelow = true
 opt.list = true
-
 opt.splitright = true
 opt.termguicolors = true
 opt.conceallevel = 0
@@ -105,6 +104,7 @@ vim.api.nvim_set_hl(0, "DiffText", { bg = "#161616" })
 -- hide ruler but highlight any character red that touches 81st column
 -- alacritty not working, kitty ok
 -- init.lua or init.nvim
+-- tested on alpha dashboard
 
 vim.cmd([[
   augroup Highlight_on_column_81
@@ -129,6 +129,13 @@ function highlight_char_column_81()
 	vim.cmd("highlight clear Red81")
 end
 
+vim.api.nvim_create_user_command("Red81", highlight_char_column_81, {})
+vim.api.nvim_create_autocmd({
+	callback = function()
+		highlight_char_column_81()
+	end,
+}, "BufEnter")
+
 -- neovide stuff
 if vim.g.neovide then
 	vim.g.neovide_transparency = 0.8
@@ -138,7 +145,7 @@ if vim.g.neovide then
 	vim.g.neovide_padding_bottom = 40
 	vim.g.neovide_padding_left = 40
 	vim.g.neovide_padding_right = 20
-	vim.opt.guifont = { "CaskaydiaCove Nerd Font Mono", ":h20" }
+	vim.opt.guifont = { "CaskaydiaCove Nerd Font", ":h20" }
 end
 
 for _, plugin in ipairs(builtins) do
