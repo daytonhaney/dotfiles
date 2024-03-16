@@ -1,1 +1,1 @@
-configuration manager - linux
+configuration manager - debian
