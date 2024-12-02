@@ -103,38 +103,38 @@ vim.api.nvim_set_hl(0, "DiffText", { bg = "#161616" })
 
 -- hide ruler but highlight any character red that touches 81st column
 -- alacritty not working, kitty ok
--- init.lua or init.nvim
 -- tested on alpha dashboard
 
-vim.cmd([[
-  augroup Highlight_on_column_81
-    autocmd!
-    autocmd WinEnter,BufWinEnter * lua highlight_char_column_81()
-  augroup END
-]])
+--vim.cmd([[
+--  augroup Highlight_on_column_81
+--    autocmd!
+--    autocmd WinEnter,BufWinEnter * lua highlight_char_column_81()
+--  augroup END
+--]])
+--
+--function highlight_char_column_81()
+--	for _, bufnr in ipairs(vim.fn.getbufinfo({ buflisted = 1, listed = 1 })) do
+--		local warnings = vim.fn.getbufline(bufnr.bufnr, 1, 1)[1]
+--		local dashboard = warnings and warnings ~= "" and warnings ~= " "
+--
+--
+--		if dashboard then
+--			vim.cmd([[
+--        highlight Red81 ctermbg=red ctermfg=white guibg=#ff0000 guifg=#ffffff
+--        match Red81 /\%81v./
+--      ]])
+--			return
+--		end
+--	end
+--	vim.cmd("highlight clear Red81")
+--end
 
-function highlight_char_column_81()
-	for _, bufnr in ipairs(vim.fn.getbufinfo({ buflisted = 1, listed = 1 })) do
-		local warnings = vim.fn.getbufline(bufnr.bufnr, 1, 1)[1]
-		local dashboard = warnings and warnings ~= "" and warnings ~= " "
-
-		if dashboard then
-			vim.cmd([[
-        highlight Red81 ctermbg=red ctermfg=white guibg=#ff0000 guifg=#ffffff
-        match Red81 /\%81v./
-      ]])
-			return
-		end
-	end
-	vim.cmd("highlight clear Red81")
-end
-
-vim.api.nvim_create_user_command("Red81", highlight_char_column_81, {})
-vim.api.nvim_create_autocmd({
-	callback = function()
-		highlight_char_column_81()
-	end,
-}, "BufEnter")
+--vim.api.nvim_create_user_command("Red81", highlight_char_column_81, {})
+--vim.api.nvim_create_autocmd({
+--	callback = function()
+--		highlight_char_column_81()
+--	end,
+--}, "BufEnter")
 
 -- neovide stuff
 if vim.g.neovide then
