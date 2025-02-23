@@ -1,8 +1,4 @@
--- here are plugs that right now dont really need a separate config file,
---
---
--- however harpoon do have separate files
-
+-- plugins without a config
 return {
 	{ "nvim-lua/popup.nvim" },
 	{ "christoomey/vim-tmux-navigator" },
@@ -11,7 +7,7 @@ return {
 	{ "petertriho/nvim-scrollbar" },
 	{ "kevinhwang91/nvim-hlslens" },
 	{ "gaborvecsei/usage-tracker.nvim" },
-	{ "focus.nvim" },
+	-- { "focus.nvim" },
 	{ "nvim-treesitter/playground" },
 	{
 		"codota/tabnine-nvim",

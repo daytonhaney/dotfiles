@@ -78,10 +78,10 @@ return {
 		})
 
 		-- configure typescript server with plugin
-		lspconfig["tsserver"].setup({
-			capabilities = capabilities,
-			on_attach = on_attach,
-		})
+		-- lspconfig["tsserver"].setup({
+		--	capabilities = capabilities,
+		--	on_attach = on_attach,
+		--})
 		lspconfig["biome"].setup({
 			capabilities = capabilities,
 			on_attach = on_attach,
