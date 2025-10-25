@@ -1,1 +1,1 @@
-configuration manager - debian
+configuration manager - Debian 13

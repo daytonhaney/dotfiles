@@ -36,6 +36,10 @@ for cmd in curl jq tar sha256sum sudo; do
 done
 
 log "Fetching latest Neovim nightly info..."
+
+
+#ASSETS_URL="https://api.github.com/repos/$REPO/releases/latest"
+
 ASSETS_URL="https://api.github.com/repos/$REPO/releases/tags/nightly"
 RELEASE_INFO=$(curl -s -L --retry 1 --retry-delay 2 "$ASSETS_URL" || {
     error "Curl failed to fetch release info. Check network or rate limit."
