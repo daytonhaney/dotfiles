@@ -1,13 +1,8 @@
 #!/bin/bash
-
-# Neovim Nightly installer
-# Debian 13 - Trixie
-
 set -euo pipefail
 
 REPO="neovim/neovim"
 PKG_NAME="neovim"
-ARCH="x86_64"
 INSTALL_PREFIX="/usr/local"
 TMP_DIR=""
 RED='\033[0;31m'
@@ -15,134 +10,72 @@ GREEN='\033[0;32m'
 YELLOW='\033[1;33m'
 NC='\033[0m'
 
-log() {
-    echo -e "${GREEN}➜ $1${NC}"
-}
+log()   { echo -e "${GREEN} $1${NC}"; }
+warn()  { echo -e "${YELLOW}Warning: $1${NC}"; }
+error() { echo -e "${RED}Error: $1${NC}" >&2; exit 1; }
 
-warn() {
-    echo -e "${YELLOW}⚠ $1${NC}"
-}
-
-error() {
-    echo -e "${RED}✖ $1${NC}" >&2
-}
-
-# Check required tools
-for cmd in curl jq tar sha256sum sudo; do
-    if ! command -v "$cmd" &> /dev/null; then
-        error "$cmd is required but not installed. Install with: sudo apt install $cmd"
-        exit 1
-    fi
+for cmd in curl tar sudo; do
+    command -v "$cmd" >/dev/null || error "$cmd not found. Install: sudo apt install $cmd"
 done
 
-log "Fetching latest Neovim nightly info..."
+log "Installing Neovim Nightly..."
 
 
-#ASSETS_URL="https://api.github.com/repos/$REPO/releases/latest"
+# Stable version 
+# ASSETS_URL="https://api.github.com/repos/$REPO/releases/latest"
+# Nightly version
+# ASSETS_URL="https://api.github.com/repos/$REPO/releases/tags/nightly"
 
-ASSETS_URL="https://api.github.com/repos/$REPO/releases/tags/nightly"
-RELEASE_INFO=$(curl -s -L --retry 1 --retry-delay 2 "$ASSETS_URL" || {
-    error "Curl failed to fetch release info. Check network or rate limit."
-    exit 1
-})
-
-# Debug: Always print if JSON is empty or invalid
-if [[ -z "$RELEASE_INFO" || "$RELEASE_INFO" == "" ]]; then
-    error "Empty response from GitHub API. Possible rate limit—wait 1 hour or try VPN."
-    exit 1
-fi
-
-# Quick check: Is this valid JSON? (jq will error if not)
-if ! echo "$RELEASE_INFO" | jq empty > /dev/null 2>&1; then
-    error "Invalid JSON from GitHub API. Raw response:"
-    echo "$RELEASE_INFO"
-    exit 1
-fi
-
-log "API response valid. Parsing assets..."
-
-# Get actual asset names
-TAR_URL=$(echo "$RELEASE_INFO" | jq -r '.assets[] | select(.name | contains("nvim-linux-x86_64.tar.gz")) | .browser_download_url')
-if [[ -z "$TAR_URL" || "$TAR_URL" == "null" ]]; then
-    error "Could not find nvim-linux-x86_64.tar.gz in nightly release."
-    warn "Debug: Available Linux assets in this response:"
-    echo "$RELEASE_INFO" | jq -r '.assets[]? | select(.name | contains("linux")) | .name' || echo "No assets found—full JSON below for inspection:"
-    echo "$RELEASE_INFO" | jq '.assets[]? | {name: .name}'  # Pretty-print assets
-    exit 1
-fi
-
-# FIXED: Extract inline SHA256 hash from API (no separate file)
-EXPECTED_SHA256=$(echo "$RELEASE_INFO" | jq -r '.assets[] | select(.name | contains("nvim-linux-x86_64.tar.gz")) | .sha256')
-if [[ -z "$EXPECTED_SHA256" || "$EXPECTED_SHA256" == "null" ]]; then
-    warn "No inline SHA256 found in API—skipping verification (download anyway)."
-    EXPECTED_SHA256=""
-else
-    log "Found expected SHA256: ${EXPECTED_SHA256:0:16}..."  # Truncate for log
-fi
-
-TAR_FILE=$(basename "$TAR_URL")
+TAR_URL="https://github.com/$REPO/releases/download/nightly/nvim-linux-x86_64.tar.gz"
+TAR_FILE="nvim-linux-x86_64.tar.gz"
 EXTRACT_DIR="nvim-linux-x86_64"
 
-log "Latest nightly asset: $TAR_FILE"
-
-# Create temp dir
+# Create
 TMP_DIR=$(mktemp -d "/tmp/${PKG_NAME}_XXXXXXX")
 trap 'rm -rf "$TMP_DIR"' EXIT
 cd "$TMP_DIR"
 
-log "Downloading Neovim nightly..."
-curl -L -o "$TAR_FILE" "$TAR_URL"
+log "Downloading $TAR_FILE..."
+curl -L --fail -o "$TAR_FILE" "$TAR_URL" || error "Download failed"
 
-# FIXED: Verify using inline SHA256
-if [[ -n "$EXPECTED_SHA256" ]]; then
-    log "Verifying checksum..."
-    COMPUTED_SHA256=$(sha256sum "$TAR_FILE" | cut -d' ' -f1)
-    if [[ "$COMPUTED_SHA256" != "$EXPECTED_SHA256" ]]; then
-        error "Checksum verification failed! Expected: $EXPECTED_SHA256, Got: $COMPUTED_SHA256"
-        exit 1
-    fi
-    log "Checksum verified: OK"
-else
-    warn "Skipping checksum (no inline hash available)"
-fi
+# Size check (catch 404s)
+FILE_SIZE=$(stat -c%s "$TAR_FILE" 2>/dev/null || wc -c < "$TAR_FILE")
+[[ $FILE_SIZE -gt 10000000 ]] || error "File too small ($FILE_SIZE bytes) — likely 404"
 
-log "Extracting archive..."
-tar xzf "$TAR_FILE"
+log "Extracting..."
+tar xzf "$TAR_FILE" || error "Extract failed"
 
-if [[ ! -d "$EXTRACT_DIR" ]]; then
-    error "Expected directory $EXTRACT_DIR not found after extraction."
-    ls -la  # Debug: Show what's actually extracted
-    exit 1
-fi
+[[ -d "$EXTRACT_DIR" ]] || error "Extract dir not found"
+[[ -f "$EXTRACT_DIR/bin/nvim" ]] || error "nvim binary missing"
 
-log "Removing old Neovim installation (if any)..."
+log "Installing to $INSTALL_PREFIX..."
 sudo rm -rf \
     "$INSTALL_PREFIX/bin/nvim" \
     "$INSTALL_PREFIX/lib/nvim" \
     "$INSTALL_PREFIX/share/nvim" \
     /usr/bin/nvim
 
-log "Installing Neovim to $INSTALL_PREFIX..."
 sudo mkdir -p "$INSTALL_PREFIX/bin" "$INSTALL_PREFIX/lib" "$INSTALL_PREFIX/share"
-sudo cp -r "$EXTRACT_DIR/bin"/* "$INSTALL_PREFIX/bin/"
-sudo cp -r "$EXTRACT_DIR/lib"/* "$INSTALL_PREFIX/lib/"
 
-sudo cp -r "$EXTRACT_DIR/share"/* "$INSTALL_PREFIX/share/"
-log "Creating symlink /usr/bin/nvim → $INSTALL_PREFIX/bin/nvim..."
+sudo cp -r "$EXTRACT_DIR/bin"/*     "$INSTALL_PREFIX/bin/"   || error "Copy bin failed"
+sudo cp -r "$EXTRACT_DIR/lib"/*     "$INSTALL_PREFIX/lib/"   || error "Copy lib failed"
+sudo cp -r "$EXTRACT_DIR/share"/*   "$INSTALL_PREFIX/share/" || error "Copy share failed"
 
-sudo ln -sf "$INSTALL_PREFIX/bin/nvim" /usr/bin/nvim
-log "Setting executable permissions..."
+log "Symlinking /usr/bin/nvim..."
+sudo ln -sf "$INSTALL_PREFIX/bin/nvim" /usr/bin/nvim || error "Symlink failed"
 
-sudo chmod +x "$INSTALL_PREFIX/bin/nvim"
-log "Cleaning up temporary files..."
-
+log "House Keeping..."
 rm -rf "$TMP_DIR"
-log "Neovim nightly installed successfully!"
 
+log "Neovim Nightly Installed!"
 echo
-if command -v nvim &> /dev/null; then
-    nvim --version | head -n 2
+
+# Test
+if [ -x "$INSTALL_PREFIX/bin/nvim" ]; then
+    "$INSTALL_PREFIX/bin/nvim" --version | head -n 2
+    echo
+    log "Run: nvim"
+    log "If not found: export PATH=\"/usr/bin:\$PATH\" && hash -r"
 else
-    error "nvim command still not found in PATH. Check /usr/bin/nvim and your PATH."
-    exit 1
+    error "nvim binary missing after install"
 fi
