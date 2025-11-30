@@ -1,5 +1,8 @@
 #!/bin/bash
+# zero stdout, just search your applications to find mullvad after script completes
 sudo apt update >/dev/null 2>&1
+
+# for any user on a debian machine
 sudo apt install -y curl gnupg >/dev/null 2>&1
 
 sudo install -d /usr/share/keyrings
