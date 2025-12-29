@@ -11,7 +11,7 @@ return {
 	{ "petertriho/nvim-scrollbar" },
 	{ "kevinhwang91/nvim-hlslens" },
 	{ "gaborvecsei/usage-tracker.nvim" },
-	{ "focus.nvim" },
+	-- { "focus.nvim" },
 	{ "nvim-treesitter/playground" },
 	{
 		"codota/tabnine-nvim",
