@@ -1,1 +1,1 @@
-configuration manager - Debian 13
+configuration manager - EndeavourOS
