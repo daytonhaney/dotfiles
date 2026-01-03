@@ -10,13 +10,13 @@ alias grep='grep --color=auto'
 PS1='[\u@\h \W]\$ '
 . "$HOME/.cargo/env"
 
-alias l='exa -lbF --icons'
+alias l='eza -lbF --icons'
 alias ll='ls -la'
-alias llm='exa -lbGd --git --sort=modified'
-alias la='exa -lbhHigUmuSa --time-style=long-iso --git --color-scale'
-alias lx='exa -lbhHigUmuSa@ --time-style=long-iso --git --color-scale'
-alias lS='exa -1'
-alias lt='exa --tree --level=5'
+alias llm='eza -lbGd --git --sort=modified'
+alias la='eza -lbhHigUmuSa --time-style=long-iso --git --color-scale'
+alias lx='eza -lbhHigUmuSa@ --time-style=long-iso --git --color-scale'
+alias lS='eza -1'
+alias lt='eza --tree --level=5'
 alias code='codium'
 
 
