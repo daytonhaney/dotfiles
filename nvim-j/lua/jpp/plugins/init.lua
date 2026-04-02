@@ -7,13 +7,11 @@ return {
 	{ "nvim-lua/popup.nvim" },
 	{ "christoomey/vim-tmux-navigator" },
 	{ "bluz71/vim-nightfly-guicolors" },
-
+    { "dmtrKovalenko/fff.nvim" },
 	{ "petertriho/nvim-scrollbar" },
 	{ "kevinhwang91/nvim-hlslens" },
 
 	-- { "focus.nvim" },
-	{ "nvim-treesitter/playground" },
-
 
 	{
 		"ThePrimeagen/harpoon",

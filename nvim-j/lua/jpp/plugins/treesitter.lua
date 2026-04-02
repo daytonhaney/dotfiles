@@ -1,74 +1,40 @@
 return {
 	"nvim-treesitter/nvim-treesitter",
-	event = { "BufReadPre", "BufNewFile" },
+	lazy = false,
 	build = ":TSUpdate",
 	dependencies = {
 		"nvim-treesitter/nvim-treesitter-textobjects",
 		"windwp/nvim-ts-autotag",
 	},
 	config = function()
-		-- import nvim-treesitter plugin
-		local treesitter = require("nvim-treesitter.configs").setup({
-			playground = {
-				enable = true,
-				updatetime = 25, -- Debounced time for highlighting nodes in the playground from source code
-				persist_queries = false, -- Whether the query persists across vim sessions
-				keybindings = {
-					toggle_query_editor = "o",
-					toggle_hl_groups = "i",
-					toggle_injected_languages = "t",
-					toggle_anonymous_nodes = "a",
-					toggle_language_display = "I",
-					focus_language = "f",
-					unfocus_language = "F",
-					update = "R",
-					goto_node = "<cr>",
-					show_help = "?",
-				},
-			},
-			ensure_installed = {
-				"json",
-				"javascript",
-				"typescript",
-				"tsx",
-				"html",
-				"rust",
-				"css",
-				"markdown",
-				"markdown_inline",
-				"vue",
-				"lua",
-				"bash",
-				"gitignore",
-				"python",
-				"vim",
-				--"elixir",
-				--"eex",
-				--"heex",
-			},
-			incremental_selection = {
-				enable = true,
-				keymaps = {
-					init_selection = "<C-space>",
-					node_incremental = "<C-space>",
-					scope_incremental = false,
-					node_decremental = "<bs>",
-				},
-			},
-			highlight = {
-				enable = true,
-			},
-			-- enable indentation
-			indent = { enable = true },
-			-- enable autotagging (w/ nvim-ts-autotag plugin)
+		require("nvim-treesitter").setup({
+			install_dir = vim.fn.stdpath("data") .. "/site",
+		})
 
-			rainbow = {
-				enable = true,
-			},
-			autotag = {
-				enable = true,
-			},
-			auto_install = true,
+		vim.api.nvim_create_autocmd("FileType", {
+			pattern = { "rust", "python", "javascript", "typescript", "lua", "html", "css", "json", "markdown" },
+			callback = function(args)
+				vim.treesitter.start(args.buf)
+				vim.bo[args.buf].foldexpr = "v:lua.vim.treesitter.foldexpr()"
+				vim.bo[args.buf].foldmethod = "expr"
+			end,
+		})
+
+		-- Python specific
+		vim.api.nvim_create_autocmd("FileType", {
+			pattern = { "python" },
+			callback = function()
+				vim.treesitter.query.set("python", "indents", {
+					"(function_definition) @indent",
+					"(class_definition) @indent",
+					"(if_statement) @indent",
+					"(for_statement) @indent",
+					"(while_statement) @indent",
+					"(with_statement) @indent",
+					"(try_statement) @indent",
+					"(except_clause) @indent",
+				})
+			end,
 		})
 	end,
 }

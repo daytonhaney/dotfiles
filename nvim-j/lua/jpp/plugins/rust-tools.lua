@@ -1,17 +1,16 @@
 return {
-	"simrat39/rust-tools.nvim",
+	"mrcjkb/rustaceanvim",
+	version = "^5",
+	ft = "rust",
 	config = function()
-		local rt = require("rust-tools")
-
-		rt.setup({
+		vim.g.rustaceanvim = {
 			server = {
 				on_attach = function(_, bufnr)
-					-- Hover actions
-					vim.keymap.set("n", "<C-space>", rt.hover_actions.hover_actions, { buffer = bufnr })
-					-- Code action groups
-					vim.keymap.set("n", "<Leader>a", rt.code_action_group.code_action_group, { buffer = bufnr })
+					vim.keymap.set("n", "<Leader>a", function()
+						vim.cmd.RustLsp "codeAction"
+					end, { buffer = bufnr, desc = "Rust code action" })
 				end,
 			},
-		})
+		}
 	end,
 }
