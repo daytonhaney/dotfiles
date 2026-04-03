@@ -5,7 +5,12 @@
 
 return {
 	{ "nvim-lua/popup.nvim" },
+    {"rafamadriz/friendly-snippets" },
 	{ "christoomey/vim-tmux-navigator" },
+    {
+    "VPavliashvili/json-nvim",
+    ft = "json", -- only load for json filetype
+    },
 	{ "bluz71/vim-nightfly-guicolors" },
     { "dmtrKovalenko/fff.nvim" },
 	{ "petertriho/nvim-scrollbar" },

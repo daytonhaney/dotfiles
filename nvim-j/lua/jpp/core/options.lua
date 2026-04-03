@@ -48,7 +48,7 @@ opt.fillchars:append("eob:~")
 opt.listchars:append("space: ")
 cmd("set lazyredraw")
 cmd("set nolist")
-opt.laststatus = 0 -- Global Status
+opt.laststatus = 3 -- Global Status
 diagnostic.config({ signs = true }) -- Removing diagnostic column
 opt.updatetime = 250
 opt.shadafile = "NONE"
@@ -141,10 +141,10 @@ if vim.g.neovide then
 	vim.g.neovide_transparency = 0.8
 	vim.g.neovide_no_idle = true
 	vim.g.neovide_refresh_rate = 165
-	vim.g.neovide_padding_top = 45
-	vim.g.neovide_padding_bottom = 40
-	vim.g.neovide_padding_left = 40
-	vim.g.neovide_padding_right = 20
+	vim.g.neovide_padding_top = 0
+	vim.g.neovide_padding_bottom = 0
+	vim.g.neovide_padding_left = 0
+	vim.g.neovide_padding_right = 0
 	vim.opt.guifont = { "CaskaydiaCove Nerd Font", ":h20" }
 end
 
