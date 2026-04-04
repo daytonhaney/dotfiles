@@ -1,210 +1,105 @@
 return {
-	"feline-nvim/feline.nvim",
-	lazy = false,
+	"nvim-lualine/lualine.nvim",
 	dependencies = { "nvim-tree/nvim-web-devicons" },
 	config = function()
-		local feline = require("feline")
-		local lazy_status = require("lazy.status")
+		local lualine = require("lualine")
 
-		local colors = {
-			bg = "#112638",
-			bg_alt = "#1a2f4a",
-			fg = "#c3ccdc",
-			fg_alt = "#7a8a9a",
-			green = "#3EFFDC",
-			yellow = "#FFDA7B",
-			orange = "#FF9E64",
-			red = "#FF4A4A",
-			blue = "#65D1FF",
-			purple = "#FF61EF",
-			cyan = "#3EFFDC",
-		}
+		-- Custom function to get the diagnostic message of the current line
+		local function get_line_diagnostic()
+			local diagnostics = vim.diagnostic.get(0, { lnum = vim.api.nvim_win_get_cursor(0)[1] - 1 })
+			if #diagnostics == 0 then
+				return ""
+			end
+			-- Return the first diagnostic message found on the line
+			local icon = "󰋽 "
+			if diagnostics[1].severity == vim.diagnostic.severity.ERROR then
+				icon = "󰅗 "
+			elseif diagnostics[1].severity == vim.diagnostic.severity.WARN then
+				icon = "󰅝 "
+			end
+			return icon .. diagnostics[1].message
+		end
 
-		local vi_mode_colors = {
-			["NORMAL"] = colors.green,
-			["INSERT"] = colors.blue,
-			["VISUAL"] = colors.purple,
-			["OP"] = colors.green,
-			["REPLACE"] = colors.red,
-			["COMMAND"] = colors.yellow,
-			["SELECT"] = colors.orange,
-			["LINEWISE"] = colors.orange,
-			["BLOCKWISE"] = colors.orange,
-		}
-
-		local vi_mode_text = {
-			["NORMAL"] = "NORMAL",
-			["INSERT"] = "INSERT",
-			["VISUAL"] = "VISUAL",
-			["OP"] = "OP",
-			["REPLACE"] = "REPLACE",
-			["COMMAND"] = "COMMAND",
-			["SELECT"] = "SELECT",
-			["LINEWISE"] = "LINE",
-			["BLOCKWISE"] = "BLOCK",
-		}
-
-		local lualine_theme = {
-			bg = colors.bg,
-			fg = colors.fg,
-			green = colors.green,
-			yellow = colors.yellow,
-			orange = colors.orange,
-			red = colors.red,
-			blue = colors.blue,
-			purple = colors.purple,
-			cyan = colors.cyan,
-		}
-
-		local icons = {
-			git_branch = "  ",
-			fileinfo = " 󰈔 ",
-			lsp = " 󰌵 ",
-			filetype = " 󰌨 ",
-			fileformat = " 󰏱 ",
-			cwd = " 󰉋 ",
-			position = " Ln ",
-			percentage = " 󰈙 ",
-			scroll_bar = " █",
-		}
-
-		local components = {
-			active = {},
-			inactive = {},
-		}
-
-		table.insert(components.active, {
-			{
-				provider = function()
-					return vi_mode_text[vim.fn.mode()] or "  "
-				end,
-				hl = function()
-					local mode = vim.fn.mode()
-					return {
-						fg = vi_mode_colors[mode] or colors.bg,
-						bg = colors.bg_alt,
-						bold = true,
-					}
-				end,
-				right_sep = {
-					str = "  ",
-					hl = colors.bg_alt,
+		lualine.setup({
+			options = {
+				theme = "tokyonight",
+				globalstatus = true, -- As requested in your options
+				component_separators = { left = "", right = "" },
+				section_separators = { left = "", right = "" },
+				disabled_filetypes = { "alpha", "dashboard", "NvimTree", "Outline" },
+			},
+			sections = {
+				lualine_a = { { "mode", separator = { left = "" }, right_padding = 2 } },
+				lualine_b = {
+					"branch",
+					{
+						"diff",
+						symbols = { added = " ", modified = " ", removed = " " },
+					},
+				},
+				lualine_c = {
+					{
+						"filename",
+						file_status = true,
+						path = 0,
+					},
+					{
+						-- Macro recording status
+						function()
+							local reg = vim.fn.reg_recording()
+							if reg == "" then
+								return ""
+							end
+							return "󰑊 Recording @" .. reg
+						end,
+						color = { fg = "#FF4A4A", gui = "bold" },
+					},
+					{
+						get_line_diagnostic, -- Show the actual diagnostic message
+						color = { fg = "#FFDA7B" }, -- Highlight color for the message
+					},
+				},
+				lualine_x = {
+					{
+						-- LSP status
+						function()
+							local msg = "No LSP"
+							local buf_ft = vim.api.nvim_get_option_value("filetype", { buf = 0 })
+							local clients = vim.lsp.get_clients({ bufnr = 0 })
+							if next(clients) == nil then
+								return msg
+							end
+							local client_names = {}
+							for _, client in ipairs(clients) do
+								table.insert(client_names, client.name)
+							end
+							return "󰌵 " .. table.concat(client_names, "|")
+						end,
+						color = { fg = "#3EFFDC" },
+					},
+					{
+						"diagnostics",
+						sources = { "nvim_diagnostic" },
+						sections = { "error", "warn", "info", "hint" },
+						symbols = { error = " ", warn = " ", info = " ", hint = "󰠠 " },
+					},
+					"encoding",
+					"fileformat",
+					"filetype",
+				},
+				lualine_y = { "progress" },
+				lualine_z = {
+					{ "location", separator = { right = "" }, left_padding = 2 },
 				},
 			},
-			{
-				provider = "git_branch",
-				icon = icons.git_branch,
-				hl = { fg = colors.orange, bg = colors.bg },
-				left_sep = {
-					str = "  ",
-					hl = colors.bg_alt,
-				},
-				right_sep = "  ",
+			inactive_sections = {
+				lualine_a = {},
+				lualine_b = {},
+				lualine_c = { "filename" },
+				lualine_x = { "location" },
+				lualine_y = {},
+				lualine_z = {},
 			},
-			{
-				provider = "fileinfo",
-				icon = icons.fileinfo,
-				hl = { fg = colors.fg, bg = colors.bg },
-				left_sep = "  ",
-				right_sep = {
-					str = "  ",
-					hl = colors.bg_alt,
-				},
-			},
-			{
-				provider = "diagnostic.errors",
-				hl = { fg = colors.red, bg = colors.bg_alt },
-				icon = " 󰅗 ",
-				right_sep = " ",
-			},
-			{
-				provider = "diagnostic.warnings",
-				hl = { fg = colors.yellow, bg = colors.bg_alt },
-				icon = " 󰅝 ",
-				right_sep = " ",
-			},
-			{
-				provider = "diagnostic.hints",
-				hl = { fg = colors.blue, bg = colors.bg_alt },
-				icon = " 󰅡 ",
-				right_sep = "  ",
-			},
-			{
-				provider = "lsp_client_names",
-				icon = icons.lsp,
-				hl = { fg = colors.cyan, bg = colors.bg },
-				left_sep = "  ",
-				right_sep = "  ",
-			},
-			{
-				provider = "filetype",
-				icon = icons.filetype,
-				hl = { fg = colors.fg, bg = colors.bg_alt },
-				left_sep = {
-					str = "  ",
-					hl = colors.bg,
-				},
-				right_sep = "  ",
-			},
-			{
-				provider = "fileformat",
-				icon = icons.fileformat,
-				hl = { fg = colors.fg, bg = colors.bg },
-				left_sep = "  ",
-				right_sep = "  ",
-			},
-			{
-				provider = function()
-					return vim.fn.fnamemodify(vim.fn.getcwd(), ":t")
-				end,
-				icon = icons.cwd,
-				hl = { fg = colors.fg, bg = colors.bg },
-				left_sep = "  ",
-				right_sep = "  ",
-			},
-			{
-				provider = "cursor_position",
-				icon = icons.position,
-				hl = { fg = colors.fg, bg = colors.bg_alt },
-				left_sep = {
-					str = "  ",
-					hl = colors.bg,
-				},
-				right_sep = "  ",
-			},
-			{
-				provider = "line_percentage",
-				icon = icons.percentage,
-				hl = { fg = colors.fg, bg = colors.bg },
-				left_sep = "  ",
-				right_sep = "  ",
-			},
-			{
-				provider = "scroll_bar",
-				hl = { fg = colors.blue, bg = colors.bg },
-				left_sep = "  ",
-			},
-		})
-
-		table.insert(components.inactive, {
-			{
-				provider = "fileinfo",
-				icon = icons.fileinfo,
-				hl = { fg = colors.fg_alt, bg = colors.bg },
-				left_sep = "  ",
-				right_sep = "  ",
-			},
-			{
-				provider = "filetype",
-				icon = icons.filetype,
-				hl = { fg = colors.fg_alt, bg = colors.bg },
-				left_sep = "  ",
-			},
-		})
-
-		feline.setup({
-			components = components,
-			theme = lualine_theme,
 		})
 	end,
 }

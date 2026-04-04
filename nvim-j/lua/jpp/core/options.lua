@@ -49,7 +49,10 @@ opt.listchars:append("space: ")
 cmd("set lazyredraw")
 cmd("set nolist")
 opt.laststatus = 3 -- Global Status
-diagnostic.config({ signs = true }) -- Removing diagnostic column
+diagnostic.config({
+	signs = true,
+	virtual_text = true,
+}) -- Removing diagnostic column
 opt.updatetime = 250
 opt.shadafile = "NONE"
 opt.shadafile = ""
