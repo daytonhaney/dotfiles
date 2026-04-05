@@ -148,8 +148,8 @@ NVIM_APPNAME=daytonhaney/dotfiles/nvim-j nvim
 
 - astro
 - cssls
-- elixirls
 - emmet_ls
+- gopls
 - graphql
 - html
 - lua_ls

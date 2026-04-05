@@ -52,6 +52,11 @@ return {
 			on_attach = on_attach,
 		}
 
+		vim.lsp.config.gopls = {
+			capabilities = capabilities,
+			on_attach = on_attach,
+		}
+
 		vim.lsp.config.tailwindcss = {
 			capabilities = capabilities,
 			on_attach = on_attach,
@@ -115,6 +120,7 @@ return {
 		vim.lsp.enable("ts_ls")
 		vim.lsp.enable("biome")
 		vim.lsp.enable("cssls")
+		vim.lsp.enable("gopls")
 		vim.lsp.enable("tailwindcss")
 		vim.lsp.enable("svelte")
 		vim.lsp.enable("emmet_ls")

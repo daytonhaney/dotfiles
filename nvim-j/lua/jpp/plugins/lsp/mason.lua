@@ -29,6 +29,7 @@ return {
 				"ts_ls",
 				"html",
 				"cssls",
+				"gopls",
 				"tailwindcss",
 				"sqls",
 				"biome",
