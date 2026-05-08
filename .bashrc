@@ -37,3 +37,8 @@ export NVM_DIR="$HOME/.nvm"
 # Source the Lazyman .nvimsbind for nvims key binding
 # shellcheck source=.config/nvim-Lazyman/.nvimsbind
 [ -f ~/.config/nvim-Lazyman/.nvimsbind ] && source ~/.config/nvim-Lazyman/.nvimsbind
+eval "$(fzf --bash)"eval "$(starship init bash)"
+export PATH="$HOME/.local/bin:$PATH"
+export PATH="$(go env GOPATH)/bin:$PATH"
+:export ODIN_ROOT="$HOME/dev/odin-toolchain/odin-linux-amd64-nightly+2026-05-07"
+export PATH="$ODIN_ROOT:$PATH"
