@@ -116,6 +116,15 @@ return {
 			},
 		}
 
+        vim.lsp.config.ols = {
+            capabilities = capabilities,
+            on_attach = on_attach,
+            cmd = { "/home/miguel/dev/odin-toolchain/ols/ols" },
+            filetypes = { "odin" },
+            root_markers = { ".git", "main.odin" },
+        }
+
+        vim.lsp.enable("ols")
 		vim.lsp.enable("html")
 		vim.lsp.enable("ts_ls")
 		vim.lsp.enable("biome")
