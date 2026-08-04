@@ -1,72 +1,117 @@
-#zmodload zsh/zprof
-# --------------------------------------------------
-# Basic Environment and PATH setup (early for overrides)
-# --------------------------------------------------
+# Uncomment temporarily to profile Zsh startup:
+# zmodload zsh/zprof
 
-# User-specific bins first
-export PATH="$HOME/.local/bin:$HOME/.local/usr/bin:$HOME/.luarocks/bin:$PATH"
-export PATH="$PATH:/usr/local/go/bin"
-export PATH="$PATH:$HOME/zig-0.11.0"
-export PATH=/home/miguel/.opencode/bin:$PATH
-export PATH="$HOME/.local/bin:$PATH"
-export PATH="$(go env GOPATH)/bin:$PATH"
-export ODIN_ROOT="$HOME/dev/odin-toolchain/odin-linux-amd64-nightly+2026-05-07"
-export PATH="$ODIN_ROOT:$PATH"
+# -----------------------------------------------------------------------------
+# Environment and PATH
+# -----------------------------------------------------------------------------
 
+# Add a directory to PATH only when it exists and is not already present.
+path_prepend() {
+  [[ -d "$1" ]] && path=("$1" $path)
+}
 
-# Bob-managed Neovim (add early so 'nvim' resolves correctly)
-if [[ -d "$HOME/.local/share/bob/nvim-bin" ]]; then
-  export PATH="$HOME/.local/share/bob/nvim-bin:$PATH"
-  # Mason bins (from Bob-managed installs)
-  export PATH="$PATH:$HOME/.local/share/nvim/mason/bin"
+path_append() {
+  [[ -d "$1" ]] && path+=("$1")
+}
+
+# Zsh keeps $path and $PATH synchronized.
+typeset -U path PATH
+
+# User executables
+path_prepend "$HOME/.local/bin"
+path_prepend "$HOME/.local/usr/bin"
+path_prepend "$HOME/.luarocks/bin"
+path_prepend "$HOME/.cargo/bin"
+path_prepend "$HOME/.opencode/bin"
+
+# Bob-managed Neovim
+path_prepend "$HOME/.local/share/bob/nvim-bin"
+
+# Neovim Mason executables
+path_append "$HOME/.local/share/nvim/mason/bin"
+
+# Optional manually installed toolchains
+path_append "/usr/local/go/bin"
+path_append "$HOME/zig-0.11.0"
+
+# Go binaries
+if command -v go >/dev/null 2>&1; then
+  export GOPATH="$(go env GOPATH)"
+  path_append "$GOPATH/bin"
 fi
 
-# --------------------------------------------------
+# Odin toolchain
+export ODIN_ROOT="$HOME/dev/odin-toolchain/odin-linux-amd64-nightly+2026-05-07"
+path_append "$ODIN_ROOT"
+
+# -----------------------------------------------------------------------------
 # Oh My Zsh
-# --------------------------------------------------
+# -----------------------------------------------------------------------------
 
 export ZSH="$HOME/.oh-my-zsh"
-#ZSH_THEME="frontcube" 
-plugins=(zsh-autosuggestions fast-syntax-highlighting)
 
-source "$ZSH/oh-my-zsh.sh"
+plugins=(
+  zsh-autosuggestions
+  fast-syntax-highlighting
+)
 
+if [[ -r "$ZSH/oh-my-zsh.sh" ]]; then
+  source "$ZSH/oh-my-zsh.sh"
+fi
 
-# --------------------------------------------------
+# -----------------------------------------------------------------------------
 # Neovim
-# --------------------------------------------------
+# -----------------------------------------------------------------------------
 
 export NVIM_APPNAME="nvim-j"
 
-if [[ -f "$HOME/.config/nvim-Lazyman/.nvimsbind" ]]; then
-  source "$HOME/.config/nvim-Lazyman/.nvimsbind"
-fi
+for config_file in \
+  "$HOME/.config/nvim-Lazyman/.nvimsbind" \
+  "$HOME/.config/nvim-Lazyman/.lazymanrc"
+do
+  [[ -r "$config_file" ]] && source "$config_file"
+done
 
-if [[ -f "$HOME/.config/nvim-Lazyman/.lazymanrc" ]]; then
-  source "$HOME/.config/nvim-Lazyman/.lazymanrc"
-fi
-
-
-alias code="codium"
-alias la='eza -lbhHigUmuSa --time-style=long-iso --git --color-scale'
-
-
-# Prefer nvim locally, fallback to vi over SSH
-if [[ -n $SSH_CONNECTION ]]; then
-  export EDITOR='vi'
+# Use vi on remote systems and Neovim locally.
+if [[ -n "$SSH_CONNECTION" ]]; then
+  export EDITOR="vi"
+  export VISUAL="vi"
 else
-  export EDITOR='nvim'
+  export EDITOR="nvim"
+  export VISUAL="nvim"
 fi
 
-# zoxide (better cd replacement)
+# -----------------------------------------------------------------------------
+# Aliases
+# -----------------------------------------------------------------------------
+
+command -v codium >/dev/null 2>&1 && alias code="codium"
+
+if command -v eza >/dev/null 2>&1; then
+  alias la='eza -lbhHigUmuSa --time-style=long-iso --git --color-scale'
+else
+  alias la='ls -lah'
+fi
+
+# -----------------------------------------------------------------------------
+# Interactive tools
+# -----------------------------------------------------------------------------
+
 if command -v zoxide >/dev/null 2>&1; then
   eval "$(zoxide init zsh)"
 fi
-eval "$(starship init zsh)"
-#source <(fzf --zsh)zprof | head -20
-eval "$(tirith init --shell zsh)"
 
-export PATH="$HOME/.local/bin:$PATH"
-export PATH="$(go env GOPATH)/bin:$PATH"
-export ODIN_ROOT="$HOME/dev/odin-toolchain/odin-linux-amd64-nightly+2026-05-07"
-export PATH="$ODIN_ROOT:$PATH"
+if command -v fzf >/dev/null 2>&1; then
+  source <(fzf --zsh)
+fi
+
+if command -v starship >/dev/null 2>&1; then
+  eval "$(starship init zsh)"
+fi
+
+if command -v tirith >/dev/null 2>&1; then
+  eval "$(tirith init --shell zsh)"
+fi
+
+# Uncomment with zprof at the top to inspect startup performance:
+# zprof | head -20
