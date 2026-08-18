@@ -13,5 +13,7 @@ return {
 		-- insert_at_start = true,
 		-- …etc.
 	},
-	version = "^1.0.0", -- optional: only update when a new 1.x version is released
+	-- Track master for compatibility with Neovim development releases.
+	-- The latest 1.x tag still uses the removed BufModifiedSet event.
+	version = false,
 }
