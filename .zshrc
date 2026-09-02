@@ -115,3 +115,11 @@ fi
 
 # Uncomment with zprof at the top to inspect startup performance:
 # zprof | head -20
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# >>> Codex installer >>>
+export PATH="/home/pablo/.local/bin:$PATH"
+# <<< Codex installer <<<
+source ~/.local/share/icons-in-terminal/icons_bash.sh
